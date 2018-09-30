@@ -1,0 +1,68 @@
+{% extends 'layouts/base.html' %}
+{% import 'macros/form_macros.html' as f %}
+{% block custom_head_tags %}
+
+{% endblock %}
+{% block page_title %}New user{% endblock %}
+{% block content_header %}
+    <h1>
+        Add new user
+        <small>Optional</small>
+    </h1>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" style="alignment: center">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Add new user</h3>
+                </div>
+                {% set flashes = {
+                'error':   get_flashed_messages(category_filter=['form-error']),
+                'warning': get_flashed_messages(category_filter=['form-check-email']),
+                'info':    get_flashed_messages(category_filter=['form-info']),
+                'success': get_flashed_messages(category_filter=['form-success'])
+            } %}
+                {{ f.begin_form(form, flashes) }}
+                <div class="box-body">
+                    {{ f.render_form_field(form.role) }}
+
+                    {{ f.render_form_field(form.username) }}
+
+                    {% if form.password %}
+
+                        <div class="two fields">
+                            {{ f.render_form_field(form.password) }}
+                            {{ f.render_form_field(form.password2) }}
+                        </div>
+
+                    {% endif %}
+
+                    {{ f.form_message(flashes['error'], header='Something went wrong.', class='error') }}
+                    {{ f.form_message(flashes['warning'], header='Check your email.', class='warning') }}
+                    {{ f.form_message(flashes['info'], header='Information', class='info') }}
+                    {{ f.form_message(flashes['success'], header='Success!', class='success') }}
+
+                    {% for field in form | selectattr('type', 'equalto', 'SubmitField') %}
+                        {{ f.render_form_field(field) }}
+                    {% endfor %}
+
+                    {{ f.end_form() }}
+{#                    {% if form.password %}#}
+{#                        {{ check.password_check('password', 0) }}#}
+{#                    {% endif %}#}
+                </div>
+                {{ f.end_form(form) }}
+            </div>
+
+            <!-- /.box -->
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block custom_js_libs %}
+
+{% endblock %}

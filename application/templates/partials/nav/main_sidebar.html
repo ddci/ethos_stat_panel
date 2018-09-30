@@ -1,0 +1,147 @@
+{% macro sidebar_menu(current_user) %}
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN</li>
+        <!-- Optionally, you can add icons to the links -->
+        <li {% if request.url_rule.endpoint == "dashboard.index" %}class="active"{% endif %}><a
+                href="{{ url_for("dashboard.index") }}"><i
+                class="fa fa-dashboard"></i> <span>Main Dashboard</span></a></li>
+        <li {% if request.url_rule.endpoint == "dashboard.heat_chart" %}class="active"{% endif %}>
+            <a href="{{ url_for("dashboard.heat_chart") }}"><i class="fa fa-pie-chart"></i> <span>Heat Chart</span></a>
+        </li>
+        <li {% if request.url_rule.endpoint == "dashboard.technical_information" %}class="active"{% endif %}>
+            <a href="{{ url_for("dashboard.technical_information") }}"><i class="fa fa-microchip"></i> <span>Technical Info</span></a>
+        </li>
+
+        <li class="header" style="width: auto">PANELS</li>
+        {#<li><a href="#"><i class="fa fa-area-chart"></i> <span>Charts</span></a></li>#}
+        {#Genrate tree#}
+        {{ generate_tree(current_user) }}
+        {% if current_user.role.index == 'supervisor' or current_user.role.index == 'admin'%}
+            <li class="header">ADMIN</li>
+            <li {% if request.url_rule.endpoint == "admin.admin_dashboard" %}class="active"{% endif %}>
+                <a href="{{ url_for("admin.admin_dashboard") }}"><i class="fa fa-lock"></i> <span>Admin Dashboard</span></a>
+            </li>
+            <li {% if request.url_rule.endpoint == "admin.nanopool_wallets_dash" %}class="active"{% endif %}>
+                <a href="{{ url_for("admin.nanopool_wallets_dash") }}"><i class="fa fa-google-wallet"></i> <span>Nanopool Info</span></a>
+            </li>
+            {% if current_user.role.index == 'admin' %}
+                <li {% if request.url_rule.endpoint == "admin.new_user" %}class="active"{% endif %}><a
+                        href="{{ url_for("admin.new_user") }}"><i class="fa fa-user-plus"></i> <span>Add User</span></a>
+                </li>
+                <li {% if request.url_rule.endpoint == "admin.registered_users" %}class="active"{% endif %}><a
+                        href="{{ url_for("admin.registered_users") }}"><i class="fa fa-users"></i>
+                    <span>User List</span></a></li>
+                <li {% if request.url_rule.endpoint == "admin.log_page" %}class="active"{% endif %}><a
+                        href="{{ url_for("admin.log_page") }}"><i class="fa fa-file-text-o"></i>
+                    <span>Log of Usage</span></a></li>
+            {% endif %}
+        {% endif %}
+
+    </ul>`
+{% endmacro %}
+{% macro generate_tree(current_user) %}
+    {% if sidebar_info %}
+        {% if sidebar_info.list_of_alive_panels %}
+            <li class="treeview {% if request.url_rule.endpoint == 'dashboard.panel_dash' or  request.url_rule.endpoint == 'dashboard.panel_dash_offline_rigs' or request.url_rule.endpoint == 'dashboard.panel_dash_crashed_gpus' or request.url_rule.endpoint == 'dashboard.panel_dash_rig' %}menu-open{% endif %}">
+                <a href="#"><i class="fa  fa fa fa-server"></i><span>Panels </span>{#{{ sidebar_info.execution_time }} sec#}
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                </a>
+                <ul class="treeview-menu"
+                    {% if request.url_rule.endpoint == 'dashboard.panel_dash' or  request.url_rule.endpoint == 'dashboard.panel_dash_offline_rigs' or request.url_rule.endpoint == 'dashboard.panel_dash_crashed_gpus' or request.url_rule.endpoint == 'dashboard.panel_dash_rig' %}style="display: block;"{% endif %}>
+                    {% for panel in sidebar_info.list_of_alive_panels %}
+                        {#{% if not (current_user.role.index == 'supervisor' and panel =='yakup1') %}#}
+                        <li>
+                            <li class="treeview menu-open">
+                                <a href="#"><i
+                                        class="fa fa-circle text-success"></i>{{ panel }}
+                                    <i class="fa fa-caret-right text-info fa-lg" style=""></i>
+                                    <small class="label pull-right bg-blue">{{ sidebar_info.num_of_alive_rigs[panel] }}
+                                        / {{ sidebar_info.num_of_rigs[panel] }}</small>
+
+                                </a>
+                                <ul class="treeview-menu" style="display: block;">
+                                    <li><a href="{{ url_for("dashboard.panel_dash",panel_name=panel) }}"><i
+                                            class="fa fa-circle text-success"></i> Panel
+                                        <small class="label pull-right bg-blue">{{ sidebar_info.num_of_rigs[panel] }}</small>
+                                    </a></li>
+                                    <li><a href="{{ url_for("dashboard.panel_dash_offline_rigs",panel_name=panel) }}"><i
+                                            class="fa fa-circle text-red"></i> Rigs Off
+                                        <small class="label pull-right bg-red">{{ sidebar_info.num_of_rigs[panel]|int - sidebar_info.num_of_alive_rigs[panel]|int }}</small>
+                                    </a></li>
+
+                                    <li><a href="{{ url_for("dashboard.panel_dash_crashed_gpus",panel_name=panel) }}"><i
+                                            class="fa fa-circle text-red"></i> GPUs Off
+                                        <small class="label pull-right bg-red">{{ sidebar_info.num_of_offline_gpus[panel] }}</small>
+                                    </a></li>
+                                </ul>
+                            </li>
+                        {#<a href="{{ url_for("dashboard.panel_dash",panel_name=panel) }}"><i
+                                class="fa fa-circle text-success"></i>{{ panel }}
+                            <i class="fa fa-caret-right text-info fa-lg" style=""></i>
+                            <small class="label pull-right bg-blue">{{ sidebar_info.num_of_alive_rigs[panel] }}
+                                / {{ sidebar_info.num_of_rigs[panel] }}</small>
+                            #}{#                            {% endif %}#}{#
+                        </a>#}
+                        </li>{#{% endif %}#}
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endif %}{% endif %}
+{% endmacro %}
+
+<!-- Left side column. contains the logo and sidebar -->
+{% if current_user.is_authenticated %}
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel" style="height: 12ch">
+                <div class="pull-left image">
+                    <img src="{{ url_for('static',filename= 'dist/img/avatar04.png') }}" class="img-circle"
+                         alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>Username: {{ current_user.username }}</p>
+                    <p>Role: {{ current_user.role.name }}</p>
+                    <!-- Status -->
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+            <!-- Sidebar Menu -->
+            {{ sidebar_menu(current_user) }}
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+{% else %}
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel" style="height: 12ch">
+                <div class="pull-left image">
+                    <img src="{{ url_for('static',filename= 'dist/img/Incognito_logo.png') }}" class="img-circle"
+                         alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>Username: Unauthorized</p>
+                    <p>Role: No Roles</p>
+                    <!-- Status -->
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">OPTIONS</li>
+                <!-- Optionally, you can add icons to the links -->
+                <li {% if request.url_rule.endpoint == "account.login" %}class="active"{% endif %}><a
+                        href="{{ url_for('account.login') }}"><i class="fa fa-key"></i> <span>Login</span></a></li>
+            </ul>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+{% endif %}

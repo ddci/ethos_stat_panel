@@ -1,0 +1,334 @@
+{% extends 'layouts/base.html' %}
+{% import 'macros/color_macros.html' as color %}
+
+{% block page_title %}Heat Charts{% endblock page_title %}
+{% block content_header %}
+    <h1>
+        Heat information
+        <small>Main Information about heat status</small>
+        <small style="color: green">DB requests and calculations execution time {{ heat_dash.execution_time }} seconds
+        </small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        {#        <li class="active">Here</li>#}
+    </ol>
+{% endblock content_header %}
+
+{% block content %}
+    <!--row-->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">All panels heat information</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="col-lg-4 col-sm-4 col-xs-12">
+                        <!-- small box -->
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                                <h3>{{ heat_dash.num_of_alive_rigs }}/{{ heat_dash.num_of_rigs }}</h3>
+
+                                <p>Rigs Alive</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-android-desktop"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                        <!-- small box -->
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                                <h3>{{ heat_dash.num_of_alive_gpus }}/{{ heat_dash.num_of_gpus }}</h3>
+
+                                <p>GPUs Alive</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-stats-bars"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!--./col-->
+                    <div class="col-lg-4 col-sm-4 col-xs-12">
+                        <div class="box-body" style="">
+                            <div style="text-align: center; font-weight: bold;font-size: larger">
+                                <b style="color: #008bf3">0 - 40 C<sup>°</sup>: {{ heat_dash.cold_gpus }} |</b>
+                                <b style="color: green">
+                                    41 - 59 C<sup>°</sup>: {{ heat_dash.ok_gpus }} |</b><br>
+                                <b style="color: orange">
+                                    60 - 79 C<sup>°</sup>: {{ heat_dash.yellow_gpus }} |</b>
+                                <b style="color: red"> 80 > C<sup>°</sup>: {{ heat_dash.red_gpus }} |</b>
+                                <br>
+                            </div>
+                            <canvas id="allgpus" style="height: 500px; width: 500px;" width="500"
+                                    height="500"></canvas>
+                        </div>
+                    </div>
+                    <!--./col-->
+                    <div class="col-lg-4 col-sm-4 col-xs-12">
+                        <!-- small box -->
+                        <div class="small-box bg-{{ color.what_color(heat_dash.average_gpu_temperature) }}">
+                            <div class="inner">
+                                <h3>{{ heat_dash.average_gpu_temperature }}<sup style="font-size: 30px">°</sup></h3>
+
+                                <p>Average GPUs Temp</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-thermometer"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!--./col-->
+    </div>
+    <!--./row -->
+
+    <div class="row">
+        {% for panel_name in heat_dash.list_of_alive_panels %}
+            <div class="col-xs-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{ panel_name }} heat information</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>{{ heat_dash.panels_temp_info_dict[panel_name].num_of_alive_rigs }}/{{ heat_dash.panels_temp_info_dict[panel_name].num_of_rigs }}</h3>
+
+                                    <p>Rigs Alive</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-android-desktop"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>{{ heat_dash.panels_temp_info_dict[panel_name].num_of_alive_gpus }}/{{ heat_dash.panels_temp_info_dict[panel_name].num_of_gpus }}</h3>
+
+                                    <p>GPUs Alive</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!--./col-->
+                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                            <div class="box-body" style="">
+                                <div style="text-align: center; font-weight: bold;font-size: larger">
+                                    <b style="color: #008bf3">0 - 40 C<sup>°</sup>: {{ heat_dash.panels_temp_info_dict[panel_name].COLD }} |</b>
+                                    <b style="color: green">
+                                        41 - 59 C<sup>°</sup>: {{ heat_dash.panels_temp_info_dict[panel_name].OK }} |</b><br>
+                                    <b style="color: orange">
+                                        60 - 79 C<sup>°</sup>: {{ heat_dash.panels_temp_info_dict[panel_name].YELLOW }} |</b>
+                                    <b style="color: red"> 80 > C<sup>°</sup> : {{ heat_dash.panels_temp_info_dict[panel_name].RED }} |</b>
+                                    <br>
+                                </div>
+                                <canvas id="donountChart{{ panel_name }}" style="height: 500px; width: 500px;"
+                                        width="500"
+                                        height="500"></canvas>
+                            </div>
+                        </div>
+                        <!--./col-->
+                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                              <!-- small box -->
+                            <div class="small-box bg-{{ color.what_color(heat_dash.panels_temp_info_dict[panel_name].average_temp|float) }}">
+                                <div class="inner">
+                                    <h3>{{ panel_name }}
+                                    </h3>
+
+                                    <p>Panel Name</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-ios-keypad-outline"></i>
+                                </div>
+
+                            </div>
+                            <!-- small box -->
+                            <div class="small-box bg-{{ color.what_color(heat_dash.panels_temp_info_dict[panel_name].average_temp|float) }}">
+                                <div class="inner">
+                                    <h3>{{ heat_dash.panels_temp_info_dict[panel_name].average_temp }}<sup
+                                            style="font-size: 30px">°</sup>
+                                    </h3>
+
+                                    <p>Average GPUs Temp</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-thermometer"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        {% endfor %}
+    </div>
+    <!--./row -->
+
+{% endblock %}
+
+
+{% block custom_js_libs %}
+    <script src="{{ url_for('static',filename= 'bower_components/chart.js/Chart.js') }}"></script>
+    <script>
+        $(function () {
+            /* ChartJS
+             * -------
+             * Here we will create a few charts using ChartJS
+             */
+            //-------------
+            //- PIE CHART -
+            //-------------
+            // Get context with jQuery - using jQuery's .get() method.
+            var pieChartCanvas2 = $('#allgpus').get(0).getContext('2d')
+            var pieChart2 = new Chart(pieChartCanvas2)
+            var PieData2 = [
+                {
+                    value: {{ heat_dash.red_gpus }},
+                    color: '#f56954',
+                    highlight: '#f56954',
+                    label: 'RED Temp GPUs'
+                },
+                {
+                    value: {{ heat_dash.ok_gpus}},
+                    color: '#00a65a',
+                    highlight: '#00a65a',
+                    label: 'OK Temp GPUs'
+                },
+                {
+                    value: {{ heat_dash.yellow_gpus }},
+                    color: '#f39c12',
+                    highlight: '#f39c12',
+                    label: 'YELLOW Temp GPUs'
+                },
+                {
+                    value: {{ heat_dash.cold_gpus }},
+                    color: '#008bf3',
+                    highlight: '#008bf3',
+                    label: 'COLD Temp GPUs'
+                }
+            ];
+            var pieOptions2 = {
+
+                //Boolean - Whether we should show a stroke on each segment
+                segmentShowStroke: true,
+                //String - The colour of each segment stroke
+                segmentStrokeColor: '#fff',
+                //Number - The width of each segment stroke
+                segmentStrokeWidth: 2,
+                //Number - The percentage of the chart that we cut out of the middle
+                percentageInnerCutout: 50, // This is 0 for Pie charts
+                //Number - Amount of animation steps
+                animationSteps: 100,
+                //String - Animation easing effect
+                animationEasing: 'easeOutBounce',
+                //Boolean - Whether we animate the rotation of the Doughnut
+                animateRotate: true,
+                //Boolean - Whether we animate scaling the Doughnut from the centre
+                animateScale: true,
+                //Boolean - whether to make the chart responsive to window resizing
+                responsive: true,
+                // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+                maintainAspectRatio: true,
+                //String - A legend template
+                legendTemplate: {% raw %}'<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'{% endraw %}
+            }
+            //Create pie or douhnut chart
+            // You can switch between pie and douhnut using the method below.
+            pieChart2.Doughnut(PieData2, pieOptions2);
+
+
+            {% for panel_name in heat_dash.list_of_alive_panels %}
+
+                var pieChartCanvas{{ panel_name }} = $('#donountChart{{ panel_name }}').get(0).getContext('2d')
+                var pieChart{{ panel_name }} = new Chart(pieChartCanvas{{ panel_name }})
+                var PieData{{ panel_name }} = [
+                    {
+                        value: {{ heat_dash.panels_temp_info_dict[panel_name].RED }},
+                        color: '#f56954',
+                        highlight: '#f56954',
+                        label: 'RED Temp GPUs'
+                    },
+                    {
+                        value: {{ heat_dash.panels_temp_info_dict[panel_name].OK}},
+                        color: '#00a65a',
+                        highlight: '#00a65a',
+                        label: 'OK Temp GPUs'
+                    },
+                    {
+                        value: {{ heat_dash.panels_temp_info_dict[panel_name].YELLOW }},
+                        color: '#f39c12',
+                        highlight: '#f39c12',
+                        label: 'YELLOW Temp GPUs'
+                    },
+                    {
+                        value: {{ heat_dash.panels_temp_info_dict[panel_name].COLD }},
+                        color: '#008bf3',
+                        highlight: '#008bf3',
+                        label: 'COLD Temp GPUs'
+                    }
+                ];
+                var pieOptions{{ panel_name }} = {
+
+                    //Boolean - Whether we should show a stroke on each segment
+                    segmentShowStroke: true,
+                    //String - The colour of each segment stroke
+                    segmentStrokeColor: '#fff',
+                    //Number - The width of each segment stroke
+                    segmentStrokeWidth: 2,
+                    //Number - The percentage of the chart that we cut out of the middle
+                    percentageInnerCutout: 50, // This is 0 for Pie charts
+                    //Number - Amount of animation steps
+                    animationSteps: 100,
+                    //String - Animation easing effect
+                    animationEasing: 'easeOutBounce',
+                    //Boolean - Whether we animate the rotation of the Doughnut
+                    animateRotate: true,
+                    //Boolean - Whether we animate scaling the Doughnut from the centre
+                    animateScale: true,
+                    //Boolean - whether to make the chart responsive to window resizing
+                    responsive: true,
+                    // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+                    maintainAspectRatio: true,
+                    //String - A legend template
+                    legendTemplate: {% raw %}'<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'{% endraw %}
+                }
+                //Create pie or douhnut chart
+                // You can switch between pie and douhnut using the method below.
+                pieChart{{ panel_name }}.Doughnut(PieData{{ panel_name }}, pieOptions{{ panel_name }})
+
+            {% endfor %}
+        })
+    </script>
+{% endblock %}

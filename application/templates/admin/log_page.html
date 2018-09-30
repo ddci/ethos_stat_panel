@@ -1,0 +1,65 @@
+{% extends 'layouts/base.html' %}
+{% block page_title %}Log Page{% endblock page_title %}
+{% block content_header %}
+    <h1>
+        Log Page
+        <small>Log of Usage</small>
+    </h1>
+    {#    <ol class="breadcrumb">#}
+    {#        <li><a href="/"><i class="fa fa-dashboard"></i> </a></li>#}
+    {#        <li class="active">Here</li>#}
+    {#    </ol>#}
+
+    <style>
+        .pagination-page-info {
+            padding: .6em;
+            padding-left: 0;
+            width: 40em;
+            margin: .5em;
+            margin-left: 0;
+            font-size: 12px;
+        }
+
+        .pagination-page-info b {
+            color: black;
+            background: #6aa6ed;
+            padding-left: 2px;
+            padding: .1em .25em;
+            font-size: 150%;
+        }
+    </style>
+{% endblock content_header %}
+{% block content %}
+    {% if pagination and log_text %}
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="alert alert-info alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-info"></i> Information!</h4>
+                    This page shows 100 line of text for file pow_log.txt in log folder.
+                    Each 100 lines are counted as one page/step for pagination system.
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                {{ pagination.info }}
+                {{ pagination.links }}
+                <div style="height:50ch;width:100%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+                    {{ log_text |safe }}
+                </div>
+                {{ pagination.links }}
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Problem !</h4>
+                This page cant be loaded. Log file stored in log folder under name log_pow.txt. Log file are too big or
+                has wrong formatting. Deleting this file could help solve this problem.
+            </div>
+        </div>
+
+
+    {% endif %}
+
+{% endblock %}

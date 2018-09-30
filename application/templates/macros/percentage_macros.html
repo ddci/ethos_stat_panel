@@ -1,0 +1,2 @@
+{% macro get_percent(less,full) %}{% if less!=0%}{{ (less/(full/100)) |int }}{% else %}0{% endif %}{% endmacro %}
+

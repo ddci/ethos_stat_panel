@@ -1,0 +1,471 @@
+{% extends 'layouts/base.html' %}
+{% import 'macros/color_macros.html' as color %}
+{% import 'macros/form_macros.html' as f %}
+{% block custom_head_tags %}
+    {#<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">#}
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.4/css/select.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/dt/jszip-2.5.0/b-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/datatables.min.css"/>
+    <style>
+        .hasTooltip span {
+            display: none;
+            color: #000;
+            text-decoration: none;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .hasTooltip:hover span {
+            display: block;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+    </style>
+{% endblock %}
+{% block page_title %}
+    {% if request.url_rule.endpoint == 'dashboard.panel_dash' %}
+        {{ request.view_args['panel_name'] }} Panel
+    {% elif request.url_rule.endpoint == 'dashboard.panel_dash_offline_rigs' %}
+        {{ request.view_args['panel_name'] }} Offline Rigs
+    {% elif request.url_rule.endpoint == 'dashboard.panel_dash_crashed_gpus' %}
+        {{ request.view_args['panel_name'] }}  Crashed GPUs
+    {% elif request.url_rule.endpoint == 'dashboard.panel_dash_under_attack_rigs' %}
+        {{ request.view_args['panel_name'] }}  Attacked Rigs
+
+    {% elif request.url_rule.endpoint == 'dashboard.panel_dash_rig' %}
+        Rig {{ request.view_args['rig_name'] }} | {{ request.view_args['panel_name'] }}
+        Panel
+    {% endif %}
+{% endblock page_title %}
+{% block content_header %}
+    <h1>
+        {% if request.url_rule.endpoint == 'dashboard.panel_dash' %} Your Stat Panel for
+            <b style="color: #00d230">{{ request.view_args['panel_name'] }}</b>
+        {% elif request.url_rule.endpoint == 'dashboard.panel_dash_offline_rigs' %} Offline Rigs for Panel
+            <b style="color: #00d230">{{ request.view_args['panel_name'] }}</b>
+        {% elif request.url_rule.endpoint == 'dashboard.panel_dash_crashed_gpus' %} Crashed GPUs for Panel
+            <b style="color: #00d230">{{ request.view_args['panel_name'] }}</b>
+        {% elif request.url_rule.endpoint == 'dashboard.panel_dash_rig' %} Rig {{ request.view_args['rig_name'] }}
+            <b style="color: #00d230">{{ request.view_args['panel_name'] }}</b>
+
+        {% endif %}
+        <small>{#No auto update#}</small>
+        <small style="  color: green">DB requests and calculations execution time {{ panel_dash.execution_time }}
+            seconds
+        </small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i>Panel</li>
+        <li class="active"><a
+                href="{{ url_for("dashboard.panel_dash",panel_name=request.view_args['panel_name']) }}"> {{ request.view_args['panel_name'] }}</a>
+        </li>
+    </ol>
+{% endblock content_header %}
+{% block content %}
+    {% if panel_dash.list_of_rigs_under_attack %}
+        <div class="row">
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Alert Attack Detected!</h4>
+                Attack detected (RX/TX are too high)
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 col-md-offset-4">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>{{ panel_dash.list_of_rigs_under_attack |length }}</h3>
+
+                        <p>Rigs Under Attack</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="{{ url_for("dashboard.panel_dash_under_attack_rigs",panel_name=request.view_args['panel_name']) }}"
+                       class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+    {% endif %}
+    <!--./row -->
+    <div class="row">
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>{{ panel_dash.total_hashrate }} MH/s</h3>
+
+                    <p>Panel Hashrate</p>
+                </div>
+                <div class="icon">
+                    <i class="ion-ios-speedometer   "></i>
+                </div>
+                <a href="{{ url_for("dashboard.panel_dash",panel_name=request.view_args['panel_name']) }}"
+                   class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>{{ panel_dash.num_of_alive_gpus }}/{{ panel_dash.num_of_gpus }}</h3>
+
+                    <p>GPUs</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="{{ url_for("dashboard.panel_dash",panel_name=request.view_args['panel_name']) }}"
+                   class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>{{ panel_dash.num_of_alive_rigs }}/{{ panel_dash.num_of_rigs }}</h3>
+
+                    <p>Rigs</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-android-desktop"></i>
+                </div>
+                <a href="{{ url_for("dashboard.panel_dash",panel_name=request.view_args['panel_name']) }}"
+                   class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--./row -->
+
+    <div class="row">
+        {#<div class="col-lg-4 col-sm-4 col-xs-12">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>#}{#{{ main_dash.num_of_alive_rigs }}/{{ main_dash.num_of_rigs }}#}{#</h3>
+
+                    <p>Rigs Alive</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!--./col-->#}
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            <!-- small box -->
+            <div class="small-box bg-{{ color.what_color(panel_dash.average_gpu_temperature) }}">
+                <div class="inner">
+                    <h3>{{ panel_dash.average_gpu_temperature }}<sup style="font-size: 30px">°</sup></h3>
+
+                    <p>Average GPUs Temp</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-thermometer"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!--./col-->
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>{{ panel_dash.offline_rigs }}</h3>
+
+                    <p>Offline/Not working Rigs</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-close"></i>
+                </div>
+                <a href="{{ url_for("dashboard.panel_dash_offline_rigs",panel_name=request.view_args['panel_name']) }}"
+                   class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!--./col-->
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>{{ panel_dash.num_of_crashed_gpus }}</h3>
+
+                    <p>Crashed GPUs</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-close"></i>
+                </div>
+                <a href="{{ url_for("dashboard.panel_dash_crashed_gpus",panel_name=request.view_args['panel_name']) }}"
+                   class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!--./col-->
+    </div>
+    <!--./row -->
+    {% if (current_user.role.index == 'admin' or current_user.role.index == 'main') %}
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-info collapsed-box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Rigs Management Tool</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+
+                    <div class="box-body">
+                        <div class="pad margin no-print">
+                            <div class="callout callout-warning" style="margin-bottom: 0!important; font-size: large">
+                                <h4><i class="fa fa-minus-circle"></i> Warning</h4>
+                                Be careful filling this fields. Wrong SSH password and hostname applied to multiple rigs
+                                can
+                                cause system lag up to 6 minutes.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-md-offset-3" style="alignment: center">
+                            <!-- general form elements -->
+                            {% set flashes = {
+                'error':   get_flashed_messages(category_filter=['form-error']),
+                'warning': get_flashed_messages(category_filter=['form-check-email']),
+                'info':    get_flashed_messages(category_filter=['form-info']),
+                'success': get_flashed_messages(category_filter=['form-success'])} %}
+                            {{ f.begin_form(form, flashes, id="ManagementRigsForm") }}
+                            <div class="box-body">
+                                {{ f.render_form_field(form.username) }}
+                                {{ f.render_form_field(form.password) }}
+                                {{ f.render_form_field(form.ssh_username) }}
+                                {{ f.render_form_field(form.ssh_password) }}
+
+                                <div class="col-offset-2 col-sm-10">
+                                    <div class="row">
+
+                                        {{ form.reboot_task(class_="check") }}
+                                        {{ form.reboot_task.label }}
+
+
+                                        <br>
+                                        {{ form.clear_thermals(class_="check") }}
+                                        {{ form.clear_thermals.label }}
+
+                                        {% if (current_user.role.index == 'admin') %}
+                                            <br>
+                                            {{ form.put_conf(class_="check") }}
+                                            {{ form.put_conf.label }}
+
+                                            <br>
+                                            {{ form.allow_command(class_="check") }}
+                                            {{ form.allow_command.label }}
+                                            <br>
+                                            <br>
+                                            {{ form.update_miners(class_="check") }}
+                                            {{ form.update_miners.label }}
+                                            <br>
+                                            {{ form.update_miner_with_name(class_="check") }}
+                                            {{ form.update_miner_with_name.label }}
+                                            <br>
+                                            {{ form.miner_name.label }}
+                                            {{ form.miner_name(disabled=True) }}
+                                            <br>
+                                            <br>
+                                            {{ form.change_password(class_="check") }}
+                                            {{ form.change_password.label }}
+                                            <br>
+                                            {{ form.new_password.label }}
+                                            {{ form.new_password(disabled=True) }}
+                                            <br>
+                                            <br>
+                                            {{ form.execute_custom_command(class_="check") }}
+                                            {{ form.execute_custom_command.label }}
+                                            <br>
+                                            {{ form.custom_command.label }}
+                                            {{ form.custom_command(disabled=True) }}
+                                            <br>
+                                            <i>Command that will be sent to the server is <b>[your_command] > /dev/null 2>&1</b>. Therefore if your command contains <b>&&</b> system will wait for output of all commands separated by <b>&&</b> except the last one.</i>
+
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {{ f.form_message(flashes['error'], header='Something went wrong.', class='error') }}
+                                {{ f.form_message(flashes['warning'], header='Warning', class='warning') }}
+                                {{ f.form_message(flashes['info'], header='Information', class='info') }}
+                                {{ f.form_message(flashes['success'], header='Success!', class='success') }}
+                            </div>
+
+                            {{ f.render_form_field(form.submit) }}
+                            {{ f.end_form(form) }}
+
+
+                            <!-- /.box -->
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!--./col-->
+        </div>
+        <!--./row -->
+    {% endif %}
+
+    <div class="row">
+        <div class="col-xs-12">
+            {% include "partials/tables/panel_table.html" %}
+        </div>
+    </div>
+    <!--./row -->
+
+{% endblock %}
+
+
+{% block custom_js_libs %}
+    <!-- DataTables -->
+    <script src="{{ url_for('static',filename= 'bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static',filename= 'bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+    {#    <script src="{{ url_for('static',filename= 'bower_components/jquery-knob/js/jquery.knob.js') }}"></script>#}
+    {#<script src="{{ url_for('static',filename= 'dist/js/demo.js') }}"></script>#}
+    <script src="http://cdn.datatables.net/plug-ins/preview/searchPane/dataTables.searchPane.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"
+            integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+
+            integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.16/sorting/any-number.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.datatables.net/v/dt/jszip-2.5.0/b-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/sl-1.2.5/datatables.min.js"></script>
+
+
+
+    <script>
+        $(function () {
+            var table = $('#rigs').DataTable({
+                    lengthMenu: [[-1], ["All"]],
+                    dom: 'Blfrtip',
+                    buttons: [
+                        'copyHtml5',
+                        'excelHtml5',
+                        'csvHtml5',
+                        'selectAll',
+                        'selectNone'
+                    ], language: {
+                        buttons: {
+                            selectAll: "Select all items",
+                            selectNone: "Select none"
+                        }
+                    },
+                    columnDefs: [
+                        {type: 'any-number', targets: 6}, {
+                            orderable: false,
+                            className: 'select-checkbox',
+                            targets: 0
+                        }, {
+                            "searchable": false,
+                            "targets": [0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+                        }
+                    ],
+                    select: {
+                        style: 'multi',
+                        selector: 'td:first-child'
+                    },
+                    order: [[1, 'desc']]
+                }
+            );
+            $("#ManagementRigsForm").submit(function (event) {
+                var rignames = $.map(table.rows('.selected').data(), function (item) {
+                    return item[7]
+                });
+                console.log(rignames);
+                var selectedHosts = JSON.stringify(rignames);
+
+                $('#ManagementRigsForm').append($("<input>").attr({
+                    "type": "hidden",
+                    "name": "selectedHosts[]"
+                }).val(selectedHosts));
+
+                {# var hostnames = $.map(table.rows('.selected').data(), function (item) {
+                     return item[9]
+                 });
+                 console.log(hostnames);
+                 var selectedHostnames = JSON.stringify(hostnames);
+
+                 $('#ManagementRigsForm').append($("<input>").attr({
+                     "type": "hidden",
+                     "name": "selectedHostnames[]"
+                 }).val(selectedHostnames));#}
+
+                {#event.preventDefault();
+                this.submit()#}
+
+
+            });
+
+        });
+        {#$(document).ready(function () {
+            var table = $('#rigs').DataTable();
+
+            $('#rigs tbody').on('click', 'tr', function () {
+                $(this).toggleClass('selected');
+            });
+
+
+        });#}
+
+        $(".location_number").ajaxForm({
+            url: '{{ url_for("ajax_requests.change_location") }}',
+            type: 'post'
+        });
+
+        $('.check').click(function () {
+            $('.check').not(this).prop('checked', false);
+        });
+
+        $('#minerNameCheckbox').change(function () {
+            if ($(this).is(':checked')) {
+                $('#minerNameField').removeAttr('disabled');
+
+            }
+            else {
+                $('#minerNameField').attr('disabled', 'disabled');
+            }
+
+        });
+
+        $('#passwordCheckbox').change(function () {
+            if ($(this).is(':checked')) {
+                $('#passwordField').removeAttr('disabled');
+
+            }
+            else {
+                $('#passwordField').attr('disabled', 'disabled');
+            }
+
+        });
+
+        $('#CustomCommandCheckbox').change(function () {
+            if ($(this).is(':checked')) {
+                $('#customCommand').removeAttr('disabled');
+
+            }
+            else {
+                $('#customCommand').attr('disabled', 'disabled');
+            }
+
+        });
+
+    </script>
+{% endblock %}

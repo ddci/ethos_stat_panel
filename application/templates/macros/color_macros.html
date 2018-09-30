@@ -1,0 +1,4 @@
+{% macro what_color(value) %}{% if value %}{% if ((value <= 40.0) and (value > 0.0)) %}blue
+{% elif ((value <= 60.0) and (value > 40.0)) %}green{% elif ((value <= 80.0) and (value > 60.0)) %}yellow
+{% elif (value > 80.0) %}red{% endif %}{% endif %}{% endmacro %}
+

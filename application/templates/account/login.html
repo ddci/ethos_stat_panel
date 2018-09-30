@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html' %}
+{% import 'macros/form_macros.html' as f %}
+{% block custom_head_tags %}
+
+{% endblock %}
+{% block page_title %}Login{% endblock %}
+{% block content_header %}
+    <h1>
+        Login page
+        <small>Enter your stats panel</small>
+    </h1>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" style="alignment: center">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Log in</h3>
+                </div>
+                {% set flashes = {
+                'error':   get_flashed_messages(category_filter=['form-error']),
+                'warning': get_flashed_messages(category_filter=['form-check-email']),
+                'info':    get_flashed_messages(category_filter=['form-info']),
+                'success': get_flashed_messages(category_filter=['form-success'])
+            } %}
+                {{ f.begin_form(form, flashes) }}
+                <div class="box-body">
+                    {{ f.render_form_field(form.username) }}
+                    {{ f.render_form_field(form.password) }}
+                    {{ f.render_form_field(form.token) }}
+                    {{ f.render_form_field(form.remember_me) }}
+                    {#<a class="help-block" href="{{ url_for('account.login') }}">Forgot password?</a>#}
+                    {{ f.form_message(flashes['error'], header='Something went wrong.', class='error') }}
+                    {{ f.form_message(flashes['warning'], header='Check your email.', class='warning') }}
+                    {{ f.form_message(flashes['info'], header='Information', class='info') }}
+                    {{ f.form_message(flashes['success'], header='Success!', class='success') }}
+                </div>
+
+                {{ f.render_form_field(form.submit) }}
+                {{ f.end_form(form) }}
+            </div>
+
+            <!-- /.box -->
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block custom_js_libs %}
+
+{% endblock %}

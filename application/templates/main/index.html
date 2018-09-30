@@ -1,0 +1,23 @@
+{% extends 'layouts/base.html' %}
+{% block page_title %}Main{% endblock page_title %}
+{% block content_header %}
+    <h1>
+        Index Page
+        <small>Main Page</small>
+    </h1>
+    {#    <ol class="breadcrumb">#}
+    {#        <li><a href="/"><i class="fa fa-dashboard"></i> </a></li>#}
+    {#        <li class="active">Here</li>#}
+    {#    </ol>#}
+{% endblock content_header %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <a href="{{ url_for('account.login') }}">
+                <button type="button" class="btn btn-block btn-success btn-lg">LOGIN</button>
+            </a>
+        </div>
+
+    </div>
+
+{% endblock %}

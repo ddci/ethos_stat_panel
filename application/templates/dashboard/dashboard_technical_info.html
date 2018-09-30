@@ -1,0 +1,366 @@
+{% extends 'layouts/base.html' %}
+{% import 'macros/color_macros.html' as color %}
+{% import 'macros/percentage_macros.html' as percentage %}
+
+{% block page_title %}Technical Info{% endblock page_title %}
+{% block content_header %}
+    <h1>
+        {% if request.view_args['bios_name'] %}Bioses Information for
+            <b style="color: green">{{ request.view_args['bios_name'] }}</b>
+        {% else %}
+            Technical Information
+        {% endif %}
+        <small></small>
+        <small style="color: green">DB requests and calculations execution time {{ tech_dash.execution_time }}
+            seconds
+        </small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Technical Info Dashboard</a></li>
+        {#        <li class="active">Here</li>#}
+    </ol>
+{% endblock content_header %}
+
+{% block content %}
+
+
+    <div class="row">
+        <div class="col-lg-4 col-sm-4 col-xs-12 col-lg-offset-2">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>{{ tech_dash.num_of_alive_gpus }}/{{ tech_dash.num_of_gpus }}</h3>
+
+                    <p>GPUs Alive</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>{{ tech_dash.num_of_rigs }}</h3>
+
+                    <p>Total Rigs</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--row-->
+    <div class="row">
+        <div class="col-lg-8 col-sm-4 col-xs-12 col-lg-offset-2">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">All Bioses</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <th>Bios</th>
+                            <th>Percentage</th>
+                            <th style="width: 40px">Amount</th>
+                            <th style="width: 40px">%</th>
+                        </tr>
+                        {% if tech_dash.dict_of_bioses %}
+                            {% for bios in tech_dash.dict_of_bioses %}
+                                <tr>
+                                    <td><b><a
+                                            href="{{ url_for("dashboard.bioses_rigs",bios_name=bios) }}">{{ bios }}</a></b>
+                                    </td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-success"
+                                                 style="width: {{ percentage.get_percent(tech_dash.dict_of_bioses[bios]|int,tech_dash.num_of_gpus|int) }}%"></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-green">{{ tech_dash.dict_of_bioses[bios] }}</span>
+                                    </td>
+                                    <td><span
+                                            class="badge bg-green">{{ percentage.get_percent(tech_dash.dict_of_bioses[bios]|int,tech_dash.num_of_gpus|int) }}%</span>
+                                    </td>
+                                </tr>{% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!--./col-->
+    </div>
+    <!--./row -->
+
+    {% if tech_dash.dict_of_ip_info_all %}
+        <div class="row">
+            <div class="col-lg-8 col-sm-4 col-xs-12 col-lg-offset-2">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">IP/Server Connection Information For All Panels</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>IP/Server</th>
+                                <th>Percentage</th>
+                                <th style="width: 40px">Amount</th>
+                                <th style="width: 40px">%</th>
+                            </tr>
+                            {% if tech_dash.dict_of_ip_info_all %}
+                                {% for ip_serv, value_list in tech_dash.dict_of_ip_info_all.items() %}
+                                    <tr>
+                                        <td><b>{{ ip_serv }}</b>
+                                        </td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-success"
+                                                     style="width: {{ percentage.get_percent(value_list|length,tech_dash.num_of_rigs|int) }}%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-green">{{ value_list|length }}</span>
+                                        </td>
+                                        <td><span
+                                                class="badge bg-green">{{ percentage.get_percent(value_list|length,tech_dash.num_of_rigs|int) }}%</span>
+                                        </td>
+                                    </tr>{% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+        <!--./col-->
+    {% endif %}
+
+    {% if tech_dash.dict_of_ip_info_panels %}
+        {% for panel_name, value in tech_dash.dict_of_ip_info_panels.items() %}
+            <div class="row">
+                <div class="col-lg-8 col-sm-4 col-xs-12 col-lg-offset-2">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">IP/Server Connection Information For <b
+                                    style="color: green">{{ panel_name }}</b></h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <th>IP/Server</th>
+                                    <th>Percentage</th>
+                                    <th style="width: 40px">Amount</th>
+                                    <th style="width: 40px">%</th>
+                                    <th>Rigs</th>
+                                </tr>
+                                {% if value %}
+                                    {% for ip_serv, value_list in value.items() %}
+                                        <tr>
+                                            <td><b>{{ ip_serv }}</b>
+                                            </td>
+                                            <td>
+                                                <div class="progress progress-xs">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         style="width: {{ percentage.get_percent(value_list|length,tech_dash.num_of_rigs|int) }}%"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-green">{{ value_list|length }}</span>
+                                            </td>
+                                            <td><span
+                                                    class="badge bg-green">{{ percentage.get_percent(value_list|length,tech_dash.num_of_rigs|int) }}%</span>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <button data-toggle="collapse"
+                                                            data-target="#toogleLocationIP{{ panel_name }}{{ loop.index }}"
+                                                            class="btn btn-block btn-success btn-sm"
+                                                            style="font-size: larger">RIGS
+                                                    </button>
+                                                    <div id="toogleLocationIP{{ panel_name }}{{ loop.index }}"
+                                                         class="collapse">
+                                                        <ul class="list-group">
+                                                            {% for rig in  value_list %}
+                                                                <li class="list-group-item">
+                                                                    <a style="color: white"
+                                                                       href="{{ url_for("dashboard.panel_dash_rig",panel_name=panel_name,rig_name = rig ) }}">
+                                                                        <button type="button"
+                                                                                class="btn btn-block btn-success">{{ rig }}
+                                                                        </button>
+                                                                    </a>
+                                                                </li>
+
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>{% endfor %}
+                                {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>{% endfor %}
+        <!--./col-->
+    {% endif %}
+
+
+    {% if tech_dash.dict_of_drive_names %}
+        <div class="row">
+            <div class="col-lg-8 col-sm-4 col-xs-12 col-lg-offset-2">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Drive Information</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Drive</th>
+                                <th>Percentage</th>
+                                <th style="width: 40px">Amount</th>
+                                <th style="width: 40px">%</th>
+                            </tr>
+                            {% if tech_dash.dict_of_drive_names %}
+                                {% for drive, value in tech_dash.dict_of_drive_names.items() %}
+                                    <tr>
+                                        <td><b>{{ drive }}</b>
+                                        </td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-success"
+                                                     style="width: {{ percentage.get_percent(value|int,tech_dash.num_of_rigs|int) }}%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-green">{{ value }}</span>
+                                        </td>
+                                        <td><span
+                                                class="badge bg-green">{{ percentage.get_percent(value|int,tech_dash.num_of_rigs|int) }}%</span>
+                                        </td>
+                                    </tr>{% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+        <!--./col-->
+    {% endif %}
+
+    {% if tech_dash.dict_of_mobo %}
+        <div class="row">
+            <div class="col-lg-8 col-sm-4 col-xs-12 col-lg-offset-2">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Motherboards Information</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Motherboard</th>
+                                <th>Percentage</th>
+                                <th style="width: 40px">Amount</th>
+                                <th style="width: 40px">%</th>
+                            </tr>
+                            {% if tech_dash.dict_of_mobo %}
+                                {% for mobo in tech_dash.dict_of_mobo %}
+                                    <tr>
+                                        <td><b>{{ mobo }}</b>
+                                        </td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-success"
+                                                     style="width: {{ percentage.get_percent(tech_dash.dict_of_mobo[mobo]|int,tech_dash.num_of_rigs|int) }}%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-green">{{ tech_dash.dict_of_mobo[mobo] }}</span>
+                                        </td>
+                                        <td><span
+                                                class="badge bg-green">{{ percentage.get_percent(tech_dash.dict_of_mobo[mobo]|int,tech_dash.num_of_rigs|int) }}%</span>
+                                        </td>
+                                    </tr>{% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+        <!--./col-->
+    {% endif %}
+
+    <div class="row">
+        {% if tech_dash.dict_of_rigs %}
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">All rigs with bios <b
+                                style="color: green">{{ request.view_args['bios_name'] }}</b></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th style="width: 20px">Rig/Host</th>
+                                <th style="width: 20px">Panel</th>
+                                <th style="width: 20px">Location</th>
+                                <th>Bioses</th>
+                            </tr>
+                            {% for rig, value in tech_dash.dict_of_rigs.items() %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ url_for("dashboard.panel_dash_rig",panel_name = value['panel_name'],rig_name = rig ) }}"><b>{{ rig }}</b></a>
+                                    </td>
+                                    <td>
+                                        {{ value["panel_name"] |string }}
+                                    </td>
+                                    <td>
+                                        <a style="color: black"
+                                           href="{{ url_for("dashboard.panel_dash_rig",panel_name = value['panel_name'],rig_name = rig ) }}">
+                                            <b>{{ value["location"] |string }}</b></a>
+                                    </td>
+                                    <td>
+                                        {% if value["bioses"] %}
+                                            {% for bios in value["bioses"] %}
+                                                {% if bios == request.view_args['bios_name'] %}
+                                                    <span class="badge bg-green">{{ bios }}</span>
+                                                {% else %}
+                                                    <span class="badge bg-red">{{ bios }}</span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </td>
+                                </tr>{% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>{% endif %}
+    </div>
+{% endblock %}
+
+
+{% block custom_js_libs %}
+    {#    <script src="{{ url_for('static',filename= 'bower_components/jquery-knob/js/jquery.knob.js') }}"></script>#}
+{% endblock %}

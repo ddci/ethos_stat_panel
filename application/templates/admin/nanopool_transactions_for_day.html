@@ -1,0 +1,172 @@
+{% extends 'layouts/base.html' %}
+{% block page_title %} {{ request.view_args['date '] }} Payments Info{% endblock page_title %}
+{% block content_header %}
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs/jq-3.2.1/dt-1.10.16/b-1.5.1/r-2.2.1/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/dt/jszip-2.5.0/b-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/datatables.min.css"/>
+
+
+    <h1> Nanopool wallet info for <b style="color: green">{{ request.view_args['proxywallet'] }}</b>
+        <br>
+        <small>Detailed transaction info</small>
+        <small style="  color: green">DB requests and calculations execution
+            time {{ nanopool_wallet_info.execution_time }}
+            seconds
+        </small>
+    </h1>
+    {#    <ol class="breadcrumb">#}
+    {#        <li><a href="/"><i class="fa fa-dashboard"></i> </a></li>#}
+    {#        <li class="active">Here</li>#}
+    {#    </ol>#}
+{% endblock content_header %}
+{% block content %}
+    {% if nanopool_wallet_info %}
+        <div class="row">
+            <div class="col-lg-4 col-xs-12 col-lg-offset-4">
+                <!-- small box -->
+                <div class="small-box bg-black-active">
+                    <div class="inner">
+                        <h3>{{ nanopool_wallet_info.all_paid }} ETH</h3>
+
+                        <p>Paid This Day</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-xs-12 col-lg-offset-2">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>{{ nanopool_wallet_info.hashrate }} MH/s</h3>
+
+                        <p>Nanopool Hashrate</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-12">
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>{{ nanopool_wallet_info.balance }}</h3>
+
+                        <p>Balance</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if nanopool_wallet_info.all_payments %}
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header bg-green">
+                            <h3 class="box-title">All Payments</h3>
+                        </div>
+
+
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div id="example2_wrapper"
+                                 class="dataTables_wrapper table-striped form-inline dt-bootstrap box-body table-responsive no-padding">
+                                <div class="row">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table id="allPaymentsTable"
+                                               class="table table-bordered table-striped dataTable"
+                                               role="grid"
+                                               aria-describedby="example2_info">
+                                            <thead>
+                                            <tr role="row">
+                                                <th tabindex="0" aria-controls="example2" rowspan="1"
+                                                    colspan="1">
+                                                    Date
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
+                                                    colspan="1">
+                                                    Total
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
+                                                    colspan="1">
+                                                    Amount
+                                                </th>
+                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
+                                                    colspan="1">
+                                                    Confirmed
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for value in nanopool_wallet_info.all_payments %}
+                                                <tr role="row" class="odd">
+                                                    <td class="">{{ value.date }}</td>
+                                                    <td class="">{{ value.txHash }}</td>
+                                                    <td class="">{{ value.amount }}</td>
+                                                    <td class="">{{ value.confirmed }}</td>
+                                                </tr>{% endfor %}
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <th rowspan="1" colspan="1">Date</th>
+                                                <th rowspan="1" colspan="1">txHash</th>
+                                                <th rowspan="1" colspan="1">Amount</th>
+                                                <th rowspan="1" colspan="1">Confirmed</th>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block custom_js_libs %}
+    <!-- DataTables -->
+    <script type="text/javascript"
+            src="https://cdn.datatables.net/v/bs/jq-3.2.1/dt-1.10.16/b-1.5.1/r-2.2.1/datatables.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.datatables.net/v/dt/jszip-2.5.0/b-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/sl-1.2.5/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script>
+        $(function () {
+            $('#allPaymentsTable').DataTable({
+                dom: 'Blfrtip',
+                paging: true,
+                lengthChange: false,
+                searching: false,
+                ordering: true,
+                info: true,
+                autoWidth: false,
+                order: [[0, 'desc']],
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+
+                ]
+            })
+        })
+    </script>
+{% endblock %}

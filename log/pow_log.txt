@@ -1,0 +1,814 @@
+2018-05-20 23:06:52.801858 : unauthenticated user : /
+2018-05-20 23:07:00.775157 : unauthenticated user : /account/login
+2018-05-20 23:12:35.911614 : unauthenticated user : /
+2018-05-20 23:12:50.580761 : unauthenticated user : /account/login
+2018-05-20 23:13:20.443181 : unauthenticated user : /account/login
+2018-05-20 23:13:20.699105 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-20 23:13:30.310493 : unauthenticated user : /account/login
+2018-05-20 23:13:30.549436 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-20 23:13:38.373859 : unauthenticated user : /account/login
+2018-05-20 23:13:38.615431 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-20 23:14:36.067379 : unauthenticated user : /account/login
+2018-05-20 23:14:49.695454 : unauthenticated user : /account/login
+2018-05-20 23:15:09.334230 : unauthenticated user : /account/login
+2018-05-20 23:44:54.523943 : unauthenticated user : /
+2018-05-20 23:45:00.664686 : unauthenticated user : /account/login
+2018-05-20 23:45:13.291419 : unauthenticated user : /account/login
+2018-05-20 23:45:26.910028 : unauthenticated user : /account/login
+2018-05-21 00:08:52.876607 : unauthenticated user : /account/login
+2018-05-21 00:09:12.019659 : unauthenticated user : /account/login
+2018-05-21 00:11:40.141794 : unauthenticated user : /
+2018-05-21 00:11:43.586424 : unauthenticated user : /account/login
+2018-05-21 00:11:54.313112 : unauthenticated user : /account/login
+2018-05-21 00:11:54.578204 : admin : /account/login :  Successfully  authenticated
+2018-05-21 00:11:54.590907 : admin : /dashboard/
+2018-05-21 00:11:57.879728 : admin : /dashboard/heat_chart
+2018-05-21 00:11:59.226796 : admin : /dashboard/technical_information
+2018-05-21 00:12:00.051137 : admin : /admin/dashboard_main
+2018-05-21 00:12:00.956687 : admin : /admin/nanopool_wallets_dash
+2018-05-21 00:12:01.431439 : admin : /admin/new-user
+2018-05-21 00:12:01.910575 : admin : /admin/users
+2018-05-21 00:12:02.457688 : admin : /admin/users
+2018-05-21 00:12:02.955467 : admin : /admin/log
+2018-05-21 00:12:09.185886 : admin : /dashboard/
+2018-05-21 00:12:10.232263 : admin : /
+2018-05-21 00:12:10.255115 : admin : /dashboard/
+2018-05-21 00:12:11.026636 : admin : /
+2018-05-21 00:12:11.053107 : admin : /dashboard/
+2018-05-21 00:13:33.865801 : admin : /
+2018-05-21 00:13:33.908646 : admin : /dashboard/
+2018-05-21 00:13:37.415048 : admin : /admin/users
+2018-05-21 00:13:38.527573 : admin : /admin/user/1/info
+2018-05-21 00:13:41.757252 : admin : /admin/user/1/info
+2018-05-21 00:13:44.051996 : admin : /admin/user/2/info
+2018-05-21 00:14:21.137754 : admin : /
+2018-05-21 00:14:21.205209 : admin : /dashboard/
+2018-05-21 00:14:24.306746 : admin : /admin/users
+2018-05-21 00:15:32.731014 : admin : /
+2018-05-21 00:15:32.825202 : admin : /dashboard/
+2018-05-21 00:15:36.519169 : admin : /admin/users
+2018-05-21 00:46:22.428217 : admin : /
+2018-05-21 00:46:22.526749 : admin : /dashboard/
+2018-05-21 00:46:31.080869 : admin : /dashboard/heat_chart
+2018-05-21 00:46:31.861682 : admin : /dashboard/
+2018-05-21 00:46:54.096785 : admin : /dashboard/
+2018-05-21 00:46:55.281468 : admin : /dashboard/
+2018-05-21 00:46:56.340176 : admin : /dashboard/
+2018-05-21 00:46:58.132566 : admin : /dashboard/
+2018-05-21 00:46:59.788956 : admin : /dashboard/
+2018-05-21 00:47:01.037972 : admin : /dashboard/
+2018-05-21 00:47:02.156454 : admin : /dashboard/
+2018-05-21 00:47:03.304065 : admin : /dashboard/
+2018-05-21 00:47:04.445858 : admin : /dashboard/
+2018-05-21 00:47:05.484166 : admin : /dashboard/
+2018-05-21 00:47:09.957019 : admin : /dashboard/
+2018-05-21 00:47:14.104250 : admin : /dashboard/heat_chart
+2018-05-21 00:47:15.124452 : admin : /dashboard/technical_information
+2018-05-21 00:47:16.275951 : admin : /dashboard/
+2018-05-21 00:47:18.257414 : admin : /admin/nanopool_wallets_dash
+2018-05-21 00:47:19.004409 : admin : /admin/dashboard_main
+2018-05-21 00:47:20.994769 : admin : /dashboard/technical_information
+2018-05-21 00:47:22.002611 : admin : /dashboard/heat_chart
+2018-05-21 00:47:23.674543 : admin : /dashboard/
+2018-05-21 00:48:12.727164 : admin : /
+2018-05-21 00:48:12.789477 : admin : /dashboard/
+2018-05-21 00:48:16.373715 : admin : /dashboard/heat_chart
+2018-05-21 00:48:17.773787 : admin : /dashboard/heat_chart
+2018-05-21 00:48:19.307077 : admin : /dashboard/heat_chart
+2018-05-21 00:48:20.688567 : admin : /dashboard/heat_chart
+2018-05-21 00:48:21.782654 : admin : /dashboard/heat_chart
+2018-05-21 00:48:22.771786 : admin : /dashboard/heat_chart
+2018-05-21 00:48:23.557149 : admin : /dashboard/heat_chart
+2018-05-21 00:48:24.259233 : admin : /dashboard/heat_chart
+2018-05-21 00:48:26.357492 : admin : /dashboard/heat_chart
+2018-05-21 00:48:27.536376 : admin : /dashboard/heat_chart
+2018-05-21 00:48:28.691336 : admin : /dashboard/heat_chart
+2018-05-21 00:48:30.217443 : admin : /dashboard/heat_chart
+2018-05-21 00:48:31.214735 : admin : /dashboard/heat_chart
+2018-05-21 00:48:32.149457 : admin : /dashboard/heat_chart
+2018-05-21 00:48:33.195086 : admin : /dashboard/heat_chart
+2018-05-21 00:48:34.092429 : admin : /dashboard/heat_chart
+2018-05-21 00:48:34.897976 : admin : /dashboard/heat_chart
+2018-05-21 00:48:35.645923 : admin : /dashboard/heat_chart
+2018-05-21 00:48:36.527663 : admin : /dashboard/heat_chart
+2018-05-21 00:48:37.278518 : admin : /dashboard/heat_chart
+2018-05-21 00:48:38.040665 : admin : /dashboard/heat_chart
+2018-05-21 00:48:38.762457 : admin : /dashboard/heat_chart
+2018-05-21 00:48:39.448298 : admin : /dashboard/heat_chart
+2018-05-21 00:48:40.115442 : admin : /dashboard/heat_chart
+2018-05-21 00:48:40.754041 : admin : /dashboard/heat_chart
+2018-05-21 00:48:41.315910 : admin : /dashboard/heat_chart
+2018-05-21 00:48:41.985465 : admin : /dashboard/heat_chart
+2018-05-21 00:48:42.749259 : admin : /dashboard/heat_chart
+2018-05-21 00:48:49.310967 : admin : /dashboard/heat_chart
+2018-05-21 00:54:08.778399 : admin : /dashboard/heat_chart
+2018-05-21 00:54:10.863222 : admin : /dashboard/heat_chart
+2018-05-21 00:54:12.293045 : admin : /dashboard/heat_chart
+2018-05-21 00:54:24.760432 : admin : /dashboard/heat_chart
+2018-05-21 00:54:26.401196 : admin : /dashboard/
+2018-05-21 00:54:56.873109 : admin : /dashboard/
+2018-05-21 00:54:57.721607 : admin : /dashboard/
+2018-05-21 00:54:58.931491 : admin : /dashboard/
+2018-05-21 00:55:00.545181 : admin : /dashboard/heat_chart
+2018-05-21 00:55:01.379439 : admin : /dashboard/technical_information
+2018-05-21 00:55:02.101174 : admin : /dashboard/
+2018-05-21 00:55:02.886820 : admin : /admin/dashboard_main
+2018-05-21 00:55:03.780541 : admin : /admin/nanopool_wallets_dash
+2018-05-21 00:55:04.388679 : admin : /admin/new-user
+2018-05-21 00:55:04.946526 : admin : /admin/users
+2018-05-21 00:55:05.574860 : admin : /admin/log
+2018-05-21 00:55:07.277464 : admin : /admin/dashboard_main
+2018-05-21 00:55:07.983932 : admin : /dashboard/
+2018-05-21 00:55:08.645434 : admin : /dashboard/heat_chart
+2018-05-21 00:55:09.373332 : admin : /dashboard/heat_chart
+2018-05-21 00:55:09.999708 : admin : /dashboard/technical_information
+2018-05-21 00:55:11.388576 : admin : /admin/dashboard_main
+2018-05-21 00:55:12.155888 : admin : /admin/nanopool_wallets_dash
+2018-05-21 00:55:13.099230 : admin : /admin/new-user
+2018-05-21 00:55:13.805326 : admin : /admin/users
+2018-05-21 00:55:16.021587 : admin : /dashboard/
+2018-05-21 00:56:55.928978 : admin : /dashboard/heat_chart
+2018-05-21 00:56:56.832636 : admin : /dashboard/technical_information
+2018-05-21 00:56:58.067331 : admin : /admin/dashboard_main
+2018-05-21 00:56:58.730885 : admin : /admin/nanopool_wallets_dash
+2018-05-21 00:56:59.222736 : admin : /admin/new-user
+2018-05-21 00:56:59.754638 : admin : /admin/log
+2018-05-21 00:57:05.995063 : admin : /dashboard/
+2018-05-21 08:35:24.758190 : admin : /
+2018-05-21 08:35:24.803750 : admin : /dashboard/
+2018-05-21 08:35:28.640262 : admin : /dashboard/panel/d98768/
+2018-05-21 08:36:34.730270 : admin : /dashboard/panel/d98768/
+2018-05-21 09:22:41.429497 : admin : /
+2018-05-21 09:22:41.472812 : admin : /dashboard/
+2018-05-21 09:22:47.294507 : admin : /dashboard/panel/d98768/
+2018-05-21 09:22:53.096396 : admin : /dashboard/panel/d98768/offline_rigs
+2018-05-21 09:22:54.332842 : admin : /dashboard/panel/d98768/
+2018-05-21 09:23:08.819813 : admin : /admin/new-user
+2018-05-21 09:23:10.979714 : admin : /admin/log
+2018-05-21 09:23:14.973923 : admin : /admin/nanopool_wallets_dash
+2018-05-21 09:23:32.962355 : admin : /admin/dashboard_main
+2018-05-21 09:23:41.556787 : admin : /dashboard/
+2018-05-21 09:23:51.752980 : admin : /dashboard/panel/d98768/crashed_gpus
+2018-05-21 09:23:52.917128 : admin : /dashboard/panel/d98768/offline_rigs
+2018-05-21 09:24:38.327126 : admin : /dashboard/heat_chart
+2018-05-21 09:25:42.004487 : unauthenticated user : /
+2018-05-21 09:25:50.535607 : unauthenticated user : /
+2018-05-21 09:26:00.466650 : unauthenticated user : /
+2018-05-21 09:26:25.101651 : unauthenticated user : /
+2018-05-21 10:52:08.712330 : unauthenticated user : /
+2018-05-21 10:59:33.953473 : unauthenticated user : /
+2018-05-21 11:03:10.838213 : unauthenticated user : /
+2018-05-22 07:38:40.782633 : unauthenticated user : /
+2018-05-22 07:40:08.389513 : unauthenticated user : /account/login
+2018-05-22 07:40:43.249648 : unauthenticated user : /account/login
+2018-05-22 07:40:43.520493 : admin : /account/login :  Successfully  authenticated
+2018-05-22 07:40:43.540284 : admin : /dashboard/
+2018-05-22 07:40:51.854353 : admin : /dashboard/heat_chart
+2018-05-22 07:40:53.413679 : admin : /dashboard/technical_information
+2018-05-22 07:40:54.595170 : admin : /dashboard/heat_chart
+2018-05-22 07:40:56.159595 : admin : /admin/dashboard_main
+2018-05-22 07:40:57.699725 : admin : /dashboard/
+2018-05-22 07:41:01.526873 : admin : /dashboard/panel/d98768/
+2018-05-22 07:41:36.553460 : admin : /dashboard/
+2018-05-22 07:44:16.078610 : admin : /dashboard/panel/d98768/
+2018-05-22 07:45:42.699078 : admin : /dashboard/
+2018-05-22 07:45:47.926718 : admin : /dashboard/panel/d98768/
+2018-05-22 07:56:26.701441 : admin : /dashboard/panel/d98768/
+2018-05-22 08:19:10.505375 : admin : /dashboard/technical_information
+2018-05-22 08:20:14.080266 : admin : /dashboard/technical_information
+2018-05-22 08:20:15.383633 : admin : /dashboard/
+2018-05-22 08:20:17.733114 : admin : /dashboard/heat_chart
+2018-05-22 08:20:18.548549 : admin : /dashboard/
+2018-05-22 08:24:07.480113 : admin : /dashboard/
+2018-05-22 08:24:10.807361 : admin : /dashboard/heat_chart
+2018-05-22 08:24:13.005383 : admin : /dashboard/
+2018-05-22 08:24:17.016778 : admin : /dashboard/
+2018-05-22 08:24:33.820977 : admin : /dashboard/heat_chart
+2018-05-22 08:24:35.356845 : admin : /dashboard/technical_information
+2018-05-22 08:24:37.610184 : admin : /admin/dashboard_main
+2018-05-22 08:24:41.814747 : admin : /dashboard/technical_information
+2018-05-22 08:24:49.705351 : admin : /dashboard/heat_chart
+2018-05-22 08:34:55.136500 : admin : /admin/dashboard_main
+2018-05-22 08:34:56.720930 : admin : /admin/new-user
+2018-05-22 08:34:58.169931 : admin : /admin/nanopool_wallets_dash
+2018-05-22 08:38:15.805137 : admin : /admin/nanopool_wallets_dash
+2018-05-22 08:38:18.168753 : admin : /admin/nanopool_wallets_dash
+2018-05-22 08:38:21.244726 : admin : /dashboard/panel/d98768/
+2018-05-22 08:38:25.233785 : admin : /admin/dashboard_main
+2018-05-22 08:38:26.361535 : admin : /admin/nanopool_wallets_dash
+2018-05-22 08:38:29.026620 : admin : /admin/nanopool_wallets_dash
+2018-05-22 08:38:33.543269 : admin : /admin/nanopool_wallets_dash
+2018-05-22 08:39:09.316452 : admin : /admin/nanopool_wallets_dash
+2018-05-22 08:39:11.168979 : admin : /admin/nanopool_wallets_dash
+2018-05-22 08:39:12.698672 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-22 08:39:16.535288 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-22 08:39:30.854131 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-22 08:39:56.492134 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-22 08:40:48.871550 : admin : /admin/nanopool_wallets_dash
+2018-05-22 08:40:50.806464 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-22 08:41:06.288840 : admin : /admin/dashboard_main
+2018-05-22 08:41:06.285646 : admin : /admin/new-user
+2018-05-22 08:41:11.823274 : admin : /dashboard/panel/d98768/rig/024636
+2018-05-22 08:41:18.865603 : admin : /dashboard/panel/d98768/crashed_gpus
+2018-05-22 08:41:20.806888 : admin : /dashboard/panel/d98768/offline_rigs
+2018-05-22 08:41:26.689797 : admin : /dashboard/
+2018-05-22 08:42:35.069405 : admin : /admin/nanopool_wallets_dash
+2018-05-22 08:55:08.861631 : unauthenticated user : /
+2018-05-22 08:55:11.761185 : unauthenticated user : /
+2018-05-22 08:59:53.516895 : admin : /dashboard/
+2018-05-22 08:59:57.259516 : admin : /admin/nanopool_wallets_dash
+2018-05-22 08:59:58.721664 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-22 09:00:01.216547 : admin : /dashboard/
+2018-05-22 09:00:06.380705 : admin : /admin/dashboard_main
+2018-05-22 09:02:13.589651 : admin : /admin/nanopool_wallets_dash
+2018-05-22 09:02:15.449274 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-22 09:02:18.778897 : admin : /admin/new-user
+2018-05-22 09:05:45.617214 : unauthenticated user : /
+2018-05-22 09:06:10.717228 : unauthenticated user : /
+2018-05-22 09:20:28.229940 : admin : /admin/nanopool_wallets_dash
+2018-05-22 09:20:29.701680 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-22 09:36:01.480508 : admin : /dashboard/panel/d98768/
+2018-05-22 09:53:10.438917 : admin : /dashboard/panel/d98768/
+2018-05-22 09:54:57.999669 : admin : /dashboard/heat_chart
+2018-05-22 09:56:09.638894 : admin : /dashboard/technical_information
+2018-05-22 09:56:11.376812 : admin : /admin/dashboard_main
+2018-05-22 10:04:50.809207 : admin : /dashboard/panel/d98768/
+2018-05-22 10:05:53.271918 : admin : /dashboard/technical_information
+2018-05-22 11:03:35.876229 : admin : /dashboard/technical_information
+2018-05-22 11:03:40.269929 : admin : /admin/nanopool_wallets_dash
+2018-05-22 11:03:41.492720 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-22 11:49:23.106541 : unauthenticated user : /
+2018-05-22 11:49:25.360426 : unauthenticated user : /account/login
+2018-05-22 11:49:38.003587 : unauthenticated user : /account/login
+2018-05-22 11:49:47.452055 : unauthenticated user : /account/login
+2018-05-22 11:50:05.238354 : unauthenticated user : /account/login
+2018-05-22 11:51:07.827256 : unauthenticated user : /account/login
+2018-05-22 11:51:08.120378 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-22 11:51:42.450950 : unauthenticated user : /account/login
+2018-05-22 11:51:42.720344 : admin : /account/login :  Successfully  authenticated
+2018-05-22 11:51:42.745946 : admin : /dashboard/
+2018-05-22 11:51:49.373048 : admin : /dashboard/panel/d98768/offline_rigs
+2018-05-22 11:51:53.036922 : admin : /admin/nanopool_wallets_dash
+2018-05-22 11:51:53.968458 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-22 11:55:56.917768 : admin : /dashboard/panel/d98768/
+2018-05-22 11:55:57.776727 : admin : /dashboard/panel/d98768/offline_rigs
+2018-05-22 11:56:15.263763 : admin : /dashboard/panel/d98768/offline_rigs
+2018-05-22 11:57:08.173702 : admin : /dashboard/panel/d98768/offline_rigs
+2018-05-22 11:57:14.930055 : admin : /dashboard/
+2018-05-22 11:57:21.794950 : admin : /admin/users
+2018-05-22 11:57:28.374002 : admin : /admin/user/2/info
+2018-05-22 11:57:31.959431 : admin : /admin/user/2/delete
+2018-05-22 11:57:34.669542 : admin : /admin/user/2/_delete
+2018-05-22 11:57:34.704078 : admin : /admin/user/2/_delete : Successfully deleted user supp.
+2018-05-22 11:57:34.718756 : admin : /admin/users
+2018-05-22 11:57:36.899936 : admin : /admin/log
+2018-05-22 11:57:58.285674 : admin : /admin/log
+2018-05-22 11:58:01.502435 : admin : /admin/log
+2018-05-22 11:58:05.731136 : admin : /dashboard/
+2018-05-22 11:58:36.107842 : admin : /dashboard/
+2018-05-22 11:58:43.467354 : admin : /dashboard/
+2018-05-22 11:58:47.648177 : admin : /dashboard/panel/d98768/
+2018-05-22 11:59:19.179877 : admin : /dashboard/
+2018-05-22 21:14:18.295022 : unauthenticated user : /
+2018-05-22 21:14:21.385436 : unauthenticated user : /account/login
+2018-05-22 21:14:38.884541 : unauthenticated user : /account/login
+2018-05-22 21:14:39.156836 : admin : /account/login :  Successfully  authenticated
+2018-05-22 21:14:39.169437 : admin : /dashboard/
+2018-05-22 21:14:50.291634 : admin : /dashboard/
+2018-05-22 21:15:35.215964 : admin : /dashboard/
+2018-05-22 21:15:35.271061 : admin : /dashboard/
+2018-05-22 22:00:02.401269 : admin : /dashboard/
+2018-05-22 22:00:23.125798 : admin : /admin/log
+2018-05-22 22:00:25.098535 : admin : /admin/log
+2018-05-22 22:00:25.835310 : admin : /admin/log
+2018-05-22 22:00:29.191724 : admin : /admin/log
+2018-05-22 22:00:30.354381 : admin : /admin/log
+2018-05-22 22:00:31.874852 : admin : /dashboard/technical_information
+2018-05-22 22:00:38.856895 : admin : /dashboard/technical_information
+2018-05-22 22:01:10.803723 : admin : /dashboard/technical_information
+2018-05-22 22:01:14.191540 : admin : /dashboard/panel/d98769/
+2018-05-22 22:01:15.963481 : admin : /dashboard/panel/d98769/
+2018-05-22 22:01:18.409814 : admin : /dashboard/
+2018-05-22 22:01:19.471303 : admin : /dashboard/
+2018-05-22 22:01:22.029417 : admin : /dashboard/
+2018-05-22 22:01:23.567653 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:01:52.728567 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:01:53.029681 : admin : /dashboard/panel/ce93ca/ : Sent  allow_command to ['c5e125']
+2018-05-22 22:02:25.284328 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:02:25.333747 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:03:27.434293 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:03:27.733186 : admin : /dashboard/panel/ce93ca/ : Sent  execute_custom_command to ['c5e125']
+2018-05-22 22:04:06.206936 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:04:50.837601 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:05:14.437152 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:05:16.648717 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:05:49.536388 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:06:09.059255 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:08:37.115322 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:08:37.420623 : admin : /dashboard/panel/ce93ca/ : Sent  execute_custom_command to ['c5e125']
+2018-05-22 22:12:23.374324 : admin : /dashboard/panel/ce93ca/
+2018-05-22 22:12:30.793944 : admin : /ajax_requests/change_location : Added location: 1 for rig: c5e125 
+2018-05-22 22:12:32.262932 : admin : /dashboard/panel/ce93ca/
+2018-05-23 08:01:49.959939 : admin : /dashboard/panel/ce93ca/
+2018-05-23 08:02:03.264049 : admin : /dashboard/
+2018-05-23 08:02:05.238120 : admin : /dashboard/heat_chart
+2018-05-23 08:02:05.840520 : admin : /dashboard/technical_information
+2018-05-23 08:02:17.383971 : admin : /dashboard/
+2018-05-23 08:02:19.660355 : admin : /admin/nanopool_wallets_dash
+2018-05-23 08:02:21.233398 : admin : /admin/new-user
+2018-05-23 08:02:22.421554 : admin : /admin/users
+2018-05-23 08:02:24.204160 : admin : /dashboard/
+2018-05-23 08:02:25.946686 : admin : /admin/log
+2018-05-23 08:02:26.781418 : admin : /admin/users
+2018-05-23 08:02:27.760876 : admin : /admin/new-user
+2018-05-23 08:02:35.148891 : admin : /admin/new-user
+2018-05-23 08:02:39.793528 : admin : /admin/new-user
+2018-05-23 08:02:40.068615 : admin : /admin/new-user : Added new usersuppwith User role.
+2018-05-23 08:02:43.068347 : admin : /admin/users
+2018-05-23 08:02:44.097177 : admin : /admin/user/2/info
+2018-05-23 08:02:45.769217 : admin : /admin/setup_two_factor/2
+2018-05-23 08:02:45.882438 : admin : /admin/qrcode/2
+2018-05-23 08:02:59.467264 : admin : /admin/setup_two_factor/2
+2018-05-23 08:02:59.600941 : admin : /admin/qrcode/2
+2018-05-23 08:03:06.303379 : admin : /dashboard/
+2018-05-23 09:37:49.896686 : admin : /admin/setup_two_factor/2
+2018-05-23 09:37:50.311386 : admin : /admin/qrcode/2
+2018-05-23 09:37:52.082489 : admin : /dashboard/
+2018-05-23 09:37:53.272623 : admin : /admin/nanopool_wallets_dash
+2018-05-23 09:37:53.965627 : admin : /admin/dashboard_main
+2018-05-23 09:37:56.942083 : admin : /admin/users
+2018-05-23 09:37:58.314198 : admin : /admin/user/2/info
+2018-05-23 09:37:59.771621 : admin : /admin/setup_two_factor/2
+2018-05-23 09:37:59.901363 : admin : /admin/qrcode/2
+2018-05-23 09:38:05.438234 : admin : /admin/setup_two_factor/2
+2018-05-23 09:38:05.547246 : admin : /admin/qrcode/2
+2018-05-23 09:38:07.515078 : admin : /admin/setup_two_factor/2
+2018-05-23 09:38:07.651453 : admin : /admin/qrcode/2
+2018-05-23 09:38:11.928236 : admin : /dashboard/panel/ce93ca/
+2018-05-23 09:39:12.154753 : admin : /dashboard/
+2018-05-23 09:39:14.071290 : admin : /dashboard/heat_chart
+2018-05-23 09:39:15.224003 : admin : /dashboard/technical_information
+2018-05-23 09:39:16.928769 : admin : /dashboard/panel/ce93ca/offline_rigs
+2018-05-23 09:39:51.089040 : admin : /
+2018-05-23 09:39:51.109877 : admin : /dashboard/
+2018-05-23 09:39:54.648141 : admin : /dashboard/panel/ce93ca/
+2018-05-23 09:39:55.472695 : admin : /dashboard/panel/ce93ca/offline_rigs
+2018-05-23 09:39:58.519807 : admin : /admin/dashboard_main
+2018-05-23 09:40:01.444342 : admin : /dashboard/panel/ce93ca/rig/c5e125
+2018-05-25 08:47:57.617148 : admin : /
+2018-05-25 08:47:57.669863 : admin : /
+2018-05-25 08:47:57.681999 : admin : /dashboard/
+2018-05-25 08:47:57.817537 : admin : /
+2018-05-25 08:48:02.132639 : admin : /dashboard/heat_chart
+2018-05-25 08:48:15.860538 : admin : /dashboard/panel/ce93ca/
+2018-05-25 08:48:24.167235 : admin : /dashboard/panel/ce93ca/
+2018-05-25 08:48:27.207298 : admin : /dashboard/heat_chart
+2018-05-25 08:48:33.851716 : admin : /dashboard/heat_chart
+2018-05-25 08:49:36.013912 : admin : /dashboard/panel/ce93ca/
+2018-05-25 08:52:04.929041 : admin : /dashboard/panel/ce93ca/
+2018-05-25 08:52:07.286226 : admin : /dashboard/heat_chart
+2018-05-25 08:52:10.182816 : admin : /dashboard/panel/ce93ca/
+2018-05-25 08:52:14.606682 : admin : /admin/dashboard_main
+2018-05-25 08:53:20.525584 : admin : /admin/nanopool_wallets_dash
+2018-05-25 08:53:21.722685 : admin : /admin/nanopool_wallets_dash
+2018-05-25 08:53:37.533552 : admin : /admin/new-user
+2018-05-25 08:53:38.454086 : admin : /admin/users
+2018-05-25 08:53:39.334514 : admin : /admin/users
+2018-05-25 08:53:39.924481 : admin : /admin/log
+2018-05-25 08:53:51.162914 : admin : /dashboard/
+2018-05-25 08:53:54.385724 : admin : /dashboard/
+2018-05-25 08:53:55.928486 : admin : /dashboard/
+2018-05-25 08:53:56.371838 : admin : /dashboard/heat_chart
+2018-05-25 08:53:57.539621 : admin : /dashboard/technical_information
+2018-05-25 08:54:00.559708 : admin : /dashboard/panel/ce93ca/
+2018-05-25 08:56:19.389338 : admin : /dashboard/panel/ce93ca/
+2018-05-25 08:56:25.728406 : admin : /dashboard/
+2018-05-25 08:56:29.386825 : admin : /dashboard/
+2018-05-25 08:56:37.542090 : admin : /dashboard/panel/ce93ca/
+2018-05-25 08:56:52.902482 : admin : /dashboard/panel/test12/
+2018-05-25 08:57:01.712784 : admin : /dashboard/panel/test12/
+2018-05-25 08:57:04.278017 : admin : /dashboard/panel/test12/
+2018-05-25 08:58:22.310620 : admin : /dashboard/panel/test12/
+2018-05-25 08:58:29.751660 : admin : /dashboard/panel/test12/
+2018-05-25 08:58:38.825915 : admin : /dashboard/panel/test12/
+2018-05-25 08:58:39.823387 : admin : /dashboard/panel/test12/
+2018-05-25 08:58:42.126718 : admin : /dashboard/panel/ce93ca/
+2018-05-25 09:01:00.712888 : admin : /dashboard/panel/ce93ca/
+2018-05-25 09:01:03.654539 : admin : /dashboard/panel/ce93ca/
+2018-05-25 09:01:06.887856 : admin : /dashboard/panel/test12/
+2018-05-25 09:06:33.948159 : admin : /dashboard/panel/test12/
+2018-05-25 09:06:38.425044 : admin : /dashboard/panel/test12/
+2018-05-25 09:06:54.329175 : admin : /dashboard/panel/test12/
+2018-05-25 09:08:53.543639 : admin : /dashboard/panel/test12/
+2018-05-25 09:13:09.476490 : admin : /dashboard/panel/test12/
+2018-05-25 09:13:09.745203 : admin : /dashboard/panel/test12/
+2018-05-25 09:13:16.325324 : admin : /dashboard/panel/test12/
+2018-05-25 09:13:18.952031 : admin : /dashboard/panel/test12/
+2018-05-25 09:13:22.101804 : admin : /dashboard/panel/test12/
+2018-05-25 09:13:24.734081 : admin : /dashboard/panel/test12/
+2018-05-25 09:13:26.276381 : admin : /dashboard/panel/test12/
+2018-05-25 09:13:34.660062 : admin : /dashboard/panel/ce93ca/offline_rigs
+2018-05-25 09:13:35.277304 : admin : /dashboard/panel/ce93ca/
+2018-05-25 09:13:37.216261 : admin : /dashboard/
+2018-05-25 09:13:42.934398 : admin : /dashboard/
+2018-05-25 09:15:56.686482 : unauthenticated user : /
+2018-05-25 09:16:18.133907 : admin : /dashboard/
+2018-05-25 09:16:20.860301 : admin : /dashboard/heat_chart
+2018-05-25 09:16:33.656482 : admin : /dashboard/panel/ce93ca/
+2018-05-25 09:16:42.484479 : admin : /dashboard/panel/test12/offline_rigs
+2018-05-25 09:16:43.046925 : admin : /dashboard/panel/ce93ca/crashed_gpus
+2018-05-25 09:16:44.503448 : admin : /dashboard/panel/test12/
+2018-05-25 09:17:34.230135 : admin : /dashboard/panel/test12/
+2018-05-25 09:17:34.528169 : admin : /dashboard/panel/test12/ : Sent  clear_thermals to ['c5e125']
+2018-05-25 09:17:45.083209 : admin : /admin/dashboard_main
+2018-05-25 09:19:00.495708 : admin : /admin/dashboard_main
+2018-05-25 09:19:15.692602 : admin : /admin/users
+2018-05-25 09:19:16.866338 : admin : /admin/log
+2018-05-25 09:19:19.225231 : admin : /admin/log
+2018-05-25 09:19:21.720814 : admin : /admin/users
+2018-05-25 09:19:23.453110 : admin : /admin/new-user
+2018-05-25 09:19:24.219813 : admin : /admin/nanopool_wallets_dash
+2018-05-25 09:19:25.284055 : admin : /admin/dashboard_main
+2018-05-25 09:19:29.042291 : admin : /dashboard/
+2018-05-25 09:19:36.731670 : admin : /dashboard/
+2018-05-25 09:19:44.804968 : admin : /dashboard/heat_chart
+2018-05-25 09:19:47.621567 : admin : /dashboard/heat_chart
+2018-05-25 09:19:48.597593 : admin : /dashboard/
+2018-05-25 09:20:01.973948 : admin : /dashboard/
+2018-05-25 09:20:09.795973 : admin : /dashboard/
+2018-05-25 09:20:45.170963 : admin : /dashboard/
+2018-05-25 09:20:48.152040 : admin : /dashboard/
+2018-05-25 09:20:50.132579 : admin : /dashboard/heat_chart
+2018-05-25 09:21:01.123851 : admin : /dashboard/heat_chart
+2018-05-25 09:21:07.180698 : admin : /dashboard/heat_chart
+2018-05-25 09:21:09.748269 : admin : /dashboard/heat_chart
+2018-05-25 09:21:56.829926 : admin : /dashboard/heat_chart
+2018-05-25 09:22:37.943077 : admin : /dashboard/heat_chart
+2018-05-25 09:22:54.650461 : admin : /dashboard/heat_chart
+2018-05-25 09:22:58.094922 : admin : /dashboard/heat_chart
+2018-05-25 09:23:01.277297 : admin : /dashboard/heat_chart
+2018-05-25 09:23:05.561198 : admin : /dashboard/panel/test12/
+2018-05-25 09:23:10.721273 : admin : /dashboard/panel/test12/
+2018-05-25 09:23:14.200922 : admin : /dashboard/panel/test12/
+2018-05-25 09:23:45.846103 : admin : /dashboard/panel/test12/
+2018-05-25 09:23:48.623135 : admin : /admin/users
+2018-05-25 09:23:50.175765 : admin : /admin/log
+2018-05-25 09:24:11.182455 : admin : /account/manage/info
+2018-05-25 09:24:13.214018 : admin : /account/manage/change-password
+2018-05-25 09:24:14.832428 : admin : /dashboard/
+2018-05-25 09:25:08.858670 : admin : /dashboard/
+2018-05-25 09:25:39.226491 : admin : /dashboard/heat_chart
+2018-05-25 09:25:41.407199 : admin : /admin/dashboard_main
+2018-05-25 09:25:42.161716 : admin : /admin/nanopool_wallets_dash
+2018-05-25 09:25:43.067236 : admin : /admin/new-user
+2018-05-25 09:25:43.726939 : admin : /admin/users
+2018-05-25 09:25:44.369972 : admin : /admin/log
+2018-05-25 09:25:46.651545 : admin : /dashboard/heat_chart
+2018-05-25 09:25:47.288058 : admin : /dashboard/technical_information
+2018-05-25 09:25:48.212005 : admin : /dashboard/heat_chart
+2018-05-25 09:25:49.011534 : admin : /dashboard/technical_information
+2018-05-25 09:31:13.387978 : admin : /dashboard/technical_information
+2018-05-25 09:34:02.899884 : admin : /dashboard/technical_information
+2018-05-25 09:36:01.618575 : admin : /dashboard/panel/test12/
+2018-05-25 09:36:07.593804 : admin : /dashboard/panel/test12/
+2018-05-25 09:36:59.326747 : admin : /dashboard/panel/test12/
+2018-05-25 09:37:43.244661 : admin : /dashboard/panel/test12/
+2018-05-25 09:37:49.414837 : admin : /dashboard/panel/test12/
+2018-05-25 09:38:18.734483 : admin : /dashboard/panel/test12/
+2018-05-25 09:38:36.283651 : admin : /dashboard/panel/test12/
+2018-05-25 09:38:58.157282 : admin : /dashboard/panel/test12/
+2018-05-25 09:39:03.605432 : admin : /
+2018-05-25 09:39:03.622925 : admin : /dashboard/
+2018-05-25 09:39:08.359844 : admin : /dashboard/
+2018-05-25 09:39:13.051499 : admin : /dashboard/heat_chart
+2018-05-25 09:39:23.386974 : admin : /admin/dashboard_main
+2018-05-25 13:09:11.396309 : admin : /
+2018-05-25 13:09:11.449214 : admin : /dashboard/
+2018-05-25 13:09:17.374445 : admin : /dashboard/heat_chart
+2018-05-25 13:09:21.760594 : admin : /dashboard/panel/test12/
+2018-05-25 16:30:04.485290 : admin : /
+2018-05-25 16:30:04.480054 : admin : /
+2018-05-25 16:30:30.086236 : admin : /
+2018-05-25 16:30:30.111306 : admin : /dashboard/
+2018-05-25 16:30:41.975640 : admin : /
+2018-05-25 16:30:49.043109 : admin : /admin/nanopool_wallets_dash
+2018-05-25 16:30:50.979010 : admin : /
+2018-05-25 16:30:50.995280 : admin : /dashboard/
+2018-05-25 16:30:51.133350 : admin : /dashboard/
+2018-05-25 16:30:55.476701 : admin : /
+2018-05-25 16:30:55.506954 : admin : /dashboard/
+2018-05-25 16:30:57.446290 : admin : /
+2018-05-25 16:30:57.474506 : admin : /dashboard/
+2018-05-25 16:44:52.912549 : admin : /dashboard/panel/test12/
+2018-05-25 16:44:55.467770 : admin : /admin/dashboard_main
+2018-05-25 16:44:59.721818 : admin : /dashboard/panel/test12/rig/c5e125
+2018-05-25 16:45:01.617501 : admin : /dashboard/panel/test12/
+2018-05-25 16:58:22.579689 : admin : /dashboard/heat_chart
+2018-05-25 17:59:52.810475 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-28 16:29:15.251841 : unauthenticated user : /
+2018-05-28 16:47:27.985451 : unauthenticated user : /
+2018-05-28 16:47:29.505897 : unauthenticated user : /account/login
+2018-05-28 16:47:56.911221 : unauthenticated user : /account/login
+2018-05-28 16:47:57.177262 : admin : /account/login :  Successfully  authenticated
+2018-05-28 16:49:00.732441 : unauthenticated user : /account/login
+2018-05-28 16:49:22.718836 : unauthenticated user : /account/login
+2018-05-28 16:49:22.996274 : admin : /account/login :  Successfully  authenticated
+2018-05-28 16:54:03.776082 : unauthenticated user : /
+2018-05-28 16:54:06.045540 : unauthenticated user : /account/login
+2018-05-28 16:54:30.629111 : unauthenticated user : /account/login
+2018-05-28 16:54:30.899366 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-28 16:54:44.308913 : unauthenticated user : /account/login
+2018-05-28 16:54:44.556923 : admin : /account/login :  Successfully  authenticated
+2018-05-28 16:57:11.627245 : unauthenticated user : /
+2018-05-28 16:57:11.628737 : unauthenticated user : /
+2018-05-28 16:57:11.753306 : unauthenticated user : /
+2018-05-28 16:57:13.360303 : unauthenticated user : /account/login
+2018-05-28 16:57:32.725100 : unauthenticated user : /account/login
+2018-05-28 16:57:32.982357 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-28 16:57:42.907067 : unauthenticated user : /account/login
+2018-05-28 16:57:43.148211 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-28 16:58:00.230370 : unauthenticated user : /account/login
+2018-05-28 16:58:00.471001 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-28 16:59:02.325328 : unauthenticated user : /account/login
+2018-05-28 16:59:02.572780 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-28 16:59:04.122815 : unauthenticated user : /
+2018-05-28 16:59:05.204599 : unauthenticated user : /account/login
+2018-05-28 16:59:22.963874 : unauthenticated user : /account/login
+2018-05-28 16:59:23.208414 : admin : /account/login :  Successfully  authenticated
+2018-05-28 17:03:05.873171 : unauthenticated user : /account/login
+2018-05-28 17:03:31.312924 : unauthenticated user : /account/login
+2018-05-28 17:03:31.581506 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-28 17:03:51.239099 : unauthenticated user : /account/login
+2018-05-28 17:03:51.499491 : admin : /account/login :  Successfully  authenticated
+2018-05-28 17:05:52.645869 : unauthenticated user : /
+2018-05-28 17:05:55.011176 : unauthenticated user : /account/login
+2018-05-28 17:07:32.041286 : unauthenticated user : /account/login
+2018-05-28 17:07:32.296942 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-28 17:07:47.437662 : unauthenticated user : /account/login
+2018-05-28 17:07:47.709907 : supp : /account/login :  Successfully  authenticated
+2018-05-28 17:09:37.039577 : unauthenticated user : /account/login
+2018-05-28 17:09:53.135455 : unauthenticated user : /account/login
+2018-05-28 17:09:53.396638 : supp : /account/login :  Successfully  authenticated
+2018-05-28 17:20:01.052744 : unauthenticated user : /
+2018-05-28 17:20:03.443792 : unauthenticated user : /account/login
+2018-05-28 17:20:41.781238 : unauthenticated user : /account/login
+2018-05-28 17:20:42.047592 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-28 17:20:50.870122 : unauthenticated user : /account/login
+2018-05-28 17:20:51.142036 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-28 17:21:00.535224 : unauthenticated user : /account/login
+2018-05-28 17:21:00.782816 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-28 17:21:17.310329 : unauthenticated user : /account/login
+2018-05-28 17:21:17.326339 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-28 17:21:26.828240 : unauthenticated user : /account/login
+2018-05-28 17:21:27.071662 : unauthenticated user : /account/login : Inserted wrong username or password
+2018-05-28 17:22:16.210874 : unauthenticated user : /account/login
+2018-05-28 17:22:16.476007 : admin : /account/login :  Successfully  authenticated
+2018-05-28 17:22:16.487843 : admin : /dashboard/
+2018-05-28 17:26:40.692893 : unauthenticated user : /
+2018-05-28 17:26:49.616909 : unauthenticated user : /account/login
+2018-05-28 17:27:05.206393 : unauthenticated user : /account/login
+2018-05-28 17:27:05.476012 : admin : /account/login :  Successfully  authenticated
+2018-05-28 17:27:05.490733 : admin : /dashboard/
+2018-05-28 17:29:27.823650 : admin : /dashboard/
+2018-05-28 17:29:31.028390 : admin : /dashboard/panel/test12/
+2018-05-28 17:30:23.479462 : admin : /dashboard/panel/test12/
+2018-05-28 17:30:28.296880 : admin : /dashboard/heat_chart
+2018-05-28 17:30:31.325590 : admin : /dashboard/heat_chart
+2018-05-28 17:30:36.577805 : admin : /dashboard/
+2018-05-28 17:30:38.016768 : admin : /dashboard/technical_information
+2018-05-28 17:30:40.572052 : admin : /dashboard/technical_information/bioses/80.28.AE.00.05
+2018-05-28 17:30:53.934238 : admin : /dashboard/panel/test12/
+2018-05-28 17:30:57.221204 : admin : /admin/dashboard_main
+2018-05-28 17:31:00.674886 : admin : /admin/nanopool_wallets_dash
+2018-05-28 17:31:02.129137 : admin : /admin/new-user
+2018-05-28 17:31:03.026857 : admin : /dashboard/
+2018-05-28 17:31:28.866960 : admin : /dashboard/heat_chart
+2018-05-28 17:31:29.543282 : admin : /dashboard/
+2018-05-28 17:31:35.506143 : admin : /dashboard/heat_chart
+2018-05-28 17:31:36.708009 : admin : /dashboard/
+2018-05-28 17:32:02.491268 : admin : /dashboard/heat_chart
+2018-05-28 17:32:06.857497 : admin : /dashboard/technical_information
+2018-05-28 17:32:10.149275 : admin : /dashboard/panel/test12/
+2018-05-28 17:32:42.918367 : admin : /ajax_requests/change_location : Added location: 10 for rig: c5e125 
+2018-05-28 17:32:44.664322 : admin : /dashboard/panel/test12/
+2018-05-28 17:33:34.825732 : admin : /admin/log
+2018-05-28 17:34:06.150989 : admin : /dashboard/
+2018-05-28 17:36:13.015856 : unauthenticated user : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-28 17:36:16.090772 : unauthenticated user : /account/login
+2018-05-28 17:43:32.923192 : admin : /admin/dashboard_main
+2018-05-28 17:43:35.381313 : admin : /dashboard/panel/test12/
+2018-05-28 17:43:49.371152 : admin : /dashboard/heat_chart
+2018-05-28 17:43:49.848013 : admin : /dashboard/
+2018-05-28 17:43:52.411111 : admin : /dashboard/panel/test12/
+2018-05-28 17:43:57.329380 : admin : /admin/dashboard_main
+2018-05-28 17:43:58.454453 : admin : /admin/nanopool_wallets_dash
+2018-05-28 17:43:59.360261 : admin : /admin/new-user
+2018-05-28 17:44:00.203502 : admin : /admin/users
+2018-05-28 17:44:01.739749 : admin : /admin/log
+2018-05-28 17:44:08.504917 : admin : /account/manage/info
+2018-05-28 17:44:09.787516 : admin : /account/manage/change-password
+2018-05-28 17:44:11.306221 : admin : /
+2018-05-28 17:44:11.325811 : admin : /dashboard/
+2018-05-28 17:45:32.699739 : admin : /dashboard/heat_chart
+2018-05-28 17:45:33.202746 : admin : /dashboard/technical_information
+2018-05-28 17:45:35.156616 : admin : /dashboard/panel/test12/
+2018-05-28 17:45:35.844145 : admin : /admin/dashboard_main
+2018-05-28 17:45:36.860527 : admin : /admin/new-user
+2018-05-28 17:45:37.424865 : admin : /admin/nanopool_wallets_dash
+2018-05-28 17:45:51.705585 : admin : /dashboard/
+2018-05-28 17:45:53.845782 : admin : /dashboard/heat_chart
+2018-05-28 17:46:01.183134 : admin : /account/manage/info
+2018-05-28 17:46:02.726478 : admin : /account/manage/change-password
+2018-05-28 17:46:12.398881 : admin : /admin/users
+2018-05-28 17:46:14.100410 : admin : /admin/user/1/info
+2018-05-28 17:46:15.269007 : admin : /admin/user/1/change-account-type
+2018-05-28 17:46:15.282719 : admin : /admin/user/1/change-account-type : Tried to change Account type of Own Account.
+2018-05-28 17:46:15.298999 : admin : /admin/user/1/info
+2018-05-28 17:46:22.898509 : admin : /admin/user/1/delete
+2018-05-28 17:46:25.083157 : admin : /admin/user/1/_delete
+2018-05-28 17:46:25.095792 : admin : /admin/user/1/_delete : Tried to delete own account.
+2018-05-28 17:46:25.106742 : admin : /admin/users
+2018-05-28 17:46:29.394666 : admin : /dashboard/
+2018-05-28 20:08:08.118883 : admin : /dashboard/
+2018-05-28 20:08:09.613186 : admin : /dashboard/
+2018-05-28 20:08:14.303978 : admin : /dashboard/panel/test12/
+2018-05-29 09:10:52.531413 : admin : /dashboard/
+2018-05-29 09:10:56.271716 : admin : /dashboard/
+2018-05-29 09:10:58.175957 : admin : /dashboard/
+2018-05-29 09:10:59.458072 : admin : /dashboard/
+2018-05-29 09:11:00.614750 : admin : /dashboard/
+2018-05-29 09:11:01.825324 : admin : /dashboard/
+2018-05-29 09:11:09.194899 : admin : /admin/nanopool_wallets_dash
+2018-05-29 09:11:10.110843 : admin : /admin/nanopool_wallets_dash
+2018-05-29 09:11:10.913690 : admin : /admin/nanopool_wallets_dash
+2018-05-29 09:11:12.080477 : admin : /dashboard/heat_chart
+2018-05-29 09:11:13.260523 : admin : /dashboard/
+2018-05-29 09:11:16.822210 : admin : /dashboard/heat_chart
+2018-05-29 09:11:29.685465 : admin : /dashboard/technical_information
+2018-05-29 09:24:56.399225 : admin : /dashboard/panel/d98769/
+2018-05-29 09:36:31.753339 : admin : /admin/nanopool_wallets_dash
+2018-05-29 09:36:33.136991 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-29 09:38:13.670533 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54/transactions_for_day/2018-01-08
+2018-05-29 09:38:42.293828 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54/transactions_for_day/2018-05-28
+2018-05-29 09:38:46.317415 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54/transactions_for_day/2018-05-27
+2018-05-29 19:30:16.761272 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54/transactions_for_day/2018-05-27
+2018-05-29 19:30:21.193440 : admin : /dashboard/panel/test12/
+2018-05-29 19:30:23.794616 : admin : /dashboard/panel/d98769/
+2018-05-29 19:30:25.393885 : admin : /admin/nanopool_wallets_dash
+2018-05-29 19:30:27.046677 : admin : /admin/dashboard_main
+2018-05-29 19:30:36.975650 : admin : /dashboard/panel/test12/
+2018-05-29 20:01:55.462074 : admin : /
+2018-05-29 20:01:55.500885 : admin : /dashboard/
+2018-05-29 20:01:55.512024 : admin : /
+2018-05-29 20:01:55.530397 : admin : /dashboard/
+2018-05-29 20:02:18.897665 : admin : /admin/dashboard_main
+2018-05-29 20:02:31.462847 : admin : /admin/new-user
+2018-05-29 20:02:33.729721 : admin : /admin/users
+2018-05-29 20:17:12.755067 : admin : /admin/nanopool_wallets_dash
+2018-05-29 20:17:14.072720 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-05-29 20:57:27.574210 : admin : /admin/dashboard_main
+2018-05-29 20:57:48.467976 : admin : /admin/new-user
+2018-05-29 21:03:12.452557 : admin : /admin/users
+2018-05-29 21:03:13.829432 : admin : /admin/user/2/info
+2018-05-29 21:03:16.698370 : admin : /account/manage/info
+2018-05-29 21:08:12.377745 : admin : /admin/user/2/info
+2018-05-29 21:08:13.195918 : admin : /admin/user/2/delete
+2018-05-29 21:08:15.354362 : admin : /admin/user/2/_delete
+2018-05-29 21:08:15.384595 : admin : /admin/user/2/_delete : Successfully deleted user supp.
+2018-05-29 21:08:15.401685 : admin : /admin/users
+2018-05-29 21:09:03.802381 : admin : /admin/new-user
+2018-05-29 21:09:12.644801 : admin : /admin/new-user
+2018-05-29 21:09:12.916920 : admin : /admin/new-user : Added new usersuppwith Supervisor role.
+2018-05-29 21:09:15.268926 : admin : /admin/users
+2018-05-29 21:09:21.667052 : admin : /admin/user/2/info
+2018-05-29 21:10:20.034838 : admin : /admin/setup_two_factor/2
+2018-05-29 21:10:20.149395 : admin : /admin/qrcode/2
+2018-05-30 06:46:48.447067 : admin : /dashboard/heat_chart
+2018-05-30 06:46:53.534860 : admin : /dashboard/panel/test12/
+2018-05-30 06:47:24.848816 : admin : /dashboard/panel/d98769/
+2018-05-30 06:51:24.454075 : admin : /dashboard/panel/d98769/
+2018-05-30 06:51:26.943646 : admin : /dashboard/panel/d98769/
+2018-05-30 06:51:29.218799 : admin : /dashboard/panel/d98769/
+2018-05-30 06:51:30.906842 : admin : /dashboard/panel/d98769/
+2018-05-30 06:51:31.773378 : admin : /dashboard/panel/d98769/
+2018-05-30 06:51:37.524149 : admin : /dashboard/panel/test12/
+2018-05-30 07:03:50.335031 : admin : /dashboard/panel/test12/
+2018-05-30 07:03:50.760130 : admin : /dashboard/panel/test12/ : Sent  execute_custom_command to ['c5e125']
+2018-05-30 07:04:07.790262 : admin : /dashboard/panel/test12/
+2018-05-30 07:04:26.574625 : admin : /admin/dashboard_main
+2018-05-30 07:04:28.840562 : admin : /admin/log
+2018-05-30 07:04:30.414258 : admin : /admin/dashboard_main
+2018-06-02 18:00:31.332433 : admin : /
+2018-06-02 18:00:31.416865 : admin : /dashboard/
+2018-06-02 18:01:24.094153 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:01:25.777456 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:01:31.326562 : admin : /dashboard/
+2018-06-02 18:01:33.881400 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:01:54.308307 : admin : /dashboard/
+2018-06-02 18:01:55.502621 : admin : /dashboard/
+2018-06-02 18:01:56.271729 : admin : /dashboard/
+2018-06-02 18:01:57.389545 : admin : /dashboard/
+2018-06-02 18:01:58.035174 : admin : /dashboard/
+2018-06-02 18:01:58.684735 : admin : /dashboard/
+2018-06-02 18:01:59.270437 : admin : /dashboard/
+2018-06-02 18:01:59.820427 : admin : /dashboard/
+2018-06-02 18:02:00.406794 : admin : /dashboard/
+2018-06-02 18:02:00.992612 : admin : /dashboard/
+2018-06-02 18:02:01.560116 : admin : /dashboard/
+2018-06-02 18:02:02.111517 : admin : /dashboard/
+2018-06-02 18:02:02.694103 : admin : /dashboard/
+2018-06-02 18:02:03.233117 : admin : /dashboard/
+2018-06-02 18:02:04.847746 : admin : /dashboard/
+2018-06-02 18:02:05.543820 : admin : /dashboard/
+2018-06-02 18:02:06.061180 : admin : /dashboard/
+2018-06-02 18:02:06.555114 : admin : /dashboard/
+2018-06-02 18:02:07.022219 : admin : /dashboard/
+2018-06-02 18:02:08.064683 : admin : /dashboard/
+2018-06-02 18:02:09.059636 : admin : /dashboard/
+2018-06-02 18:02:09.643834 : admin : /dashboard/
+2018-06-02 18:02:10.141816 : admin : /dashboard/
+2018-06-02 18:02:13.651774 : admin : /dashboard/panel/d98769/
+2018-06-02 18:02:29.305885 : admin : /admin/dashboard_main
+2018-06-02 18:02:32.053486 : admin : /admin/new-user
+2018-06-02 18:02:32.936124 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:02:34.152725 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:02:34.949468 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:02:35.798936 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:02:37.313050 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:02:37.884121 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:02:38.477421 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:02:58.226397 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:02:59.004863 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:02:59.616886 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:03:00.266722 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:03:01.057159 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:03:02.951192 : admin : /admin/new-user
+2018-06-02 18:03:04.058802 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:03:04.661892 : admin : /admin/dashboard_main
+2018-06-02 18:03:06.690251 : admin : /dashboard/panel/d98769/
+2018-06-02 18:03:08.494546 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:03:10.030152 : admin : /admin/new-user
+2018-06-02 18:03:11.818326 : admin : /admin/dashboard_main
+2018-06-02 18:03:26.599969 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:03:31.329422 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:03:34.159968 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:03:35.552491 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:03:36.978075 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:03:39.552900 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:04:07.172258 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:04:12.152050 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:04:34.947554 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:04:54.009096 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:05:19.308692 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:07:28.188929 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:10:04.789068 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:10:05.661946 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:10:19.470452 : admin : /
+2018-06-02 18:10:19.491946 : admin : /dashboard/
+2018-06-02 18:10:21.374144 : admin : /admin/dashboard_main
+2018-06-02 18:10:21.759301 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:10:23.106512 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:12:07.410498 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:12:09.186358 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:12:27.363906 : admin : /admin/nanopool_wallets_dash
+2018-06-02 18:12:28.463430 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:14:28.405330 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:15:50.229313 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:21:06.468670 : admin : /admin/nanopool_wallet_info/0x362c89a6d8a1597ff41eb03e1e897d0d95827c54
+2018-06-02 18:21:06.512202 : admin : /admin/nanopool_wallets_dash
+2018-06-14 13:02:13.126785 : admin : /
+2018-06-14 13:02:13.142656 : admin : /
+2018-06-14 13:02:13.207339 : admin : /dashboard/
+2018-06-14 13:02:13.206799 : admin : /dashboard/
+2018-06-14 13:02:25.169655 : admin : /dashboard/
+2018-06-14 13:02:28.632091 : admin : /dashboard/panel/d98769/
+2018-06-14 13:02:58.934867 : admin : /dashboard/panel/d98769/
+2018-06-14 13:03:25.114828 : admin : /ajax_requests/change_location : Added location: 1 for rig: 024636 
+2018-06-14 13:03:27.031958 : admin : /dashboard/panel/d98769/
+2018-06-14 14:57:53.054071 : admin : /
+2018-06-14 14:57:53.104249 : admin : /dashboard/
+2018-06-14 14:57:56.094636 : admin : /admin/log
+2018-06-14 14:58:07.310197 : admin : /admin/log
+2018-06-14 14:58:13.486913 : admin : /admin/log
+2018-06-14 14:58:19.095787 : admin : /admin/log
+2018-06-14 15:00:06.776553 : admin : /admin/dashboard_main
+2018-06-14 15:02:10.543158 : admin : /admin/users
+2018-06-14 15:02:13.436791 : admin : /admin/user/2/info
+2018-06-14 15:02:17.308623 : admin : /admin/user/2/change-account-type
+2018-06-14 15:04:30.161974 : admin : /admin/dashboard_main
+2018-06-14 15:07:17.677797 : admin : /dashboard/panel/d98769/
+2018-06-14 15:07:19.973839 : admin : /dashboard/panel/d98769/
+2018-06-14 15:07:22.039172 : admin : /dashboard/
+2018-06-14 15:07:26.235237 : admin : /dashboard/panel/test12/
+2018-06-14 15:08:08.038776 : admin : /dashboard/panel/test12/
+2018-06-14 15:08:10.625606 : admin : /dashboard/panel/test12/
+2018-06-14 15:08:26.083193 : admin : /dashboard/panel/test12/
+2018-06-14 15:08:48.537783 : admin : /dashboard/panel/test12/
+2018-06-14 15:08:51.313950 : admin : /dashboard/panel/test12/
+2018-06-14 15:09:05.961542 : admin : /dashboard/panel/test12/
+2018-06-14 15:09:05.954921 : admin : /dashboard/panel/test12/
+2018-06-14 15:09:17.533221 : admin : /dashboard/panel/test12/
+2018-06-14 15:09:24.759845 : admin : /dashboard/panel/test12/
+2018-06-14 15:09:51.529061 : admin : /dashboard/panel/test12/
+2018-06-14 15:09:55.313191 : admin : /dashboard/panel/test12/
+2018-06-14 15:10:01.528241 : admin : /dashboard/panel/test12/

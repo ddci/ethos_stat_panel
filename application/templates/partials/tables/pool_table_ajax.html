@@ -1,0 +1,158 @@
+{% import 'macros/color_macros.html' as color %}
+{% macro generate_tabel(current_user,panel_dash) %}
+    <table class="table table-hover">
+        <tbody>
+        <tr>
+            <th>OK</th>
+            <th>Host/Rig</th>
+            <th>Last time seen</th>
+            <th>Miner</th>
+            <th>GPUs</th>
+            <th>Flags</th>
+            <th>GPU Temp</th>
+            <th>Hashes</th>
+            <th>IP</th>
+            <th>Status</th>
+        </tr>
+        {#<tr>
+            <td>df3456</td>
+            <td>clymoore</td>
+            <td>3/4</td>
+            <td><span class="label label-danger">THR</span></td>
+            <td><span class="badge bg-red">55%</span><span class="badge bg-red">55%</span></td>
+            <td>333 44 333 444</td>
+            <td>hardware error: possible gpu/riser/power failure</td>
+        </tr>#}
+        {% if panel_dash.panel_info.rigs_info %}
+            {% for rig in panel_dash.panel_info.rigs_info %}
+                <tr>
+                    <td>
+                        <i class="fa fa-circle text-{% if panel_dash.panel_info.rigs_info[rig].is_off %}danger{% else %}success{% endif %}"></i>
+                    </td>
+                    <td> {{ panel_dash.panel_info.rigs_info[rig].hostname }}</td>
+                    <td> {{ panel_dash.panel_info.rigs_info[rig].last_request }} min</td>
+                    <td>{{ panel_dash.panel_info.rigs_info[rig].miner }}</td>
+                    <td>{{ panel_dash.panel_info.rigs_info[rig].gpus_alive }}/{{ panel_dash.panel_info.rigs_info[rig].gpus }}</td>
+                    <td>{% if panel_dash.panel_info.rigs_info[rig].flags_status %}
+                        {% for flag in panel_dash.panel_info.rigs_info[rig].flags_status %}
+                            <span class="label label-warning">{{ flag }}</span>
+                        {% endfor %}
+                    {% endif %}
+                    </td>
+                    <td>{% if panel_dash.panel_info.rigs_info[rig].gpu_temps %}
+                        {% for temp in panel_dash.panel_info.rigs_info[rig].gpu_temps %}
+                            <span class="badge bg-{{ color.what_color(temp) }}">{{ temp }}<sup style="">°</sup></span>
+                        {% endfor %}
+                    {% endif %}
+                    </td>
+                    <td>
+                        {% if panel_dash.panel_info.rigs_info[rig].miner_hashes %}
+                            {% for hash in panel_dash.panel_info.rigs_info[rig].miner_hashes %}
+                                <span class="badge bg-white">{{ hash }} Hash/s</span>
+                            {% endfor %}
+                        {% endif %}
+                    </td>
+                    <td>{{ panel_dash.panel_info.rigs_info[rig].ip_address }}</td>
+                    <td>{{ panel_dash.panel_info.rigs_info[rig].status }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endmacro %}
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">All rigs information</h3>
+        {#<div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>#}
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
+                           aria-describedby="example1_info">
+                        <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="ОК: activate to sort column descending" {#style="width: 5px;"#}
+                                aria-sort="ascending">ОК
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Ноst/Rig: activate to sort column ascending" {#style="width: 40px;"#}>
+                                Ноst/Rig
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Miner: activate to sort column ascending" {#style="width: 199px;"#}>
+                                Miner
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="GPUs: activate to sort column ascending" {#style="width: 156px;"#}>
+                                GPUs
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Flags: activate to sort column ascending" {#style="width: 112px;"#}>Flags
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="GPU Temp: activate to sort column ascending" {#style="width: 112px;"#}>GPU
+                                Temp
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Hashes: activate to sort column ascending" {#style="width: 112px;"#}>Hashes
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="IP: activate to sort column ascending" {#style="width: 112px;"#}>IP
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Status: activate to sort column ascending" {#style="width: 112px;"#}>Status
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {#                        <tr role="row" class="odd">#}
+                        {#                            <td class="sorting_1">Gecko</td>#}
+                        {#                            <td class="">Seamonkey 1.1</td>#}
+                        {#                            <td>Win 98+ / OSX.2+</td>#}
+                        {#                            <td>1.8</td>#}
+                        {#                            <td class="">A</td>#}
+                        {#                        </tr>#}
+                        {#                        <tr role="row" class="even">#}
+                        {#                            <td class="sorting_1">Gecko</td>#}
+                        {#                            <td class="">Netscape Navigator 9</td>#}
+                        {#                            <td>Win 98+ / OSX.2+</td>#}
+                        {#                            <td>1.8</td>#}
+                        {#                            <td class="">A</td>#}
+                        {#                        </tr>#}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th rowspan="1" colspan="1">OK</th>
+                            <th rowspan="1" colspan="1">Host/Rig</th>
+                            <th rowspan="1" colspan="1">Miner</th>
+                            <th rowspan="1" colspan="1">GPUs</th>
+                            <th rowspan="1" colspan="1">Flags</th>
+                            <th rowspan="1" colspan="1">GPU Temp</th>
+                            <th rowspan="1" colspan="1">Hashes</th>
+                            <th rowspan="1" colspan="1">IP</th>
+                            <th rowspan="1" colspan="1">Status</th>
+
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.box-body -->
+</div>
+<!-- /.box -->
+

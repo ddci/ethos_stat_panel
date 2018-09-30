@@ -1,0 +1,60 @@
+{% extends 'layouts/base.html' %}
+{% block page_title %}Nanopool Wallets{% endblock page_title %}
+{% block content_header %}
+    <h1> Nanopool Info
+        <small>List of Nanopool Wallets</small>
+        <small style="  color: green">DB requests and calculations execution time {{ nano_pool_main.execution_time }}
+            seconds
+        </small>
+    </h1>
+    {#    <ol class="breadcrumb">#}
+    {#        <li><a href="/"><i class="fa fa-dashboard"></i> </a></li>#}
+    {#        <li class="active">Here</li>#}
+    {#    </ol>#}
+{% endblock content_header %}
+{% block content %}
+    {% if nano_pool_main.list_of_nanopool_wallets %}
+        <div class="row">
+            <div class="col-lg-4 col-sm-4 col-xs-12 col-lg-offset-4">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>{{ nano_pool_main.list_of_nanopool_wallets |length }}</h3>
+
+                        <p>Wallets working with Nanopool</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-card"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-4 col-xs-12 col-lg-offset-3">
+                <!-- small box -->
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Nanopool wallets</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+
+
+                    {% for wallet in nano_pool_main.list_of_nanopool_wallets %}<div class="box-body bg-green">
+                        <a href="{{ url_for("admin.nanopool_wallet_info",proxywallet=wallet) }}">
+                            <button type="button" class="btn btn-block btn-success"><b>{{ wallet }}</b>
+                            </button>
+                        </a>
+                    </div>{% endfor %}
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>{% endif %}
+
+{% endblock %}

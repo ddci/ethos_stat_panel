@@ -1,0 +1,115 @@
+version: '2'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: daniel_nikulin/stat_system
+    volumes:
+      - .:/app
+      - /Users/danielnikulin/DBs/sqlite/data-dev.sqlite:/app/db/data-dev.sqlite
+#      - /Users/danielnikulin/DBs/sqlite/data-dev.sqlite:/app/data.sqlite
+#      - /Users/danielnikulin/DBs/sqlite/data-dev.sqlite:/app/data-test.sqlite
+    links:
+      - redis
+      - mongodb
+    command: gunicorn -w 2 -b "0.0.0.0:8080" --log-level INFO 'manage:make_app(app_type="web")'
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongodb
+      - redis
+      - celery_beat
+      - celery_worker_main_queue
+      - celery_worker_ssh_queue
+#    environment:
+#      - FLASK_CONFIG="development"
+    env_file:
+    - ./configs/config.env
+
+  receiver:
+    build: .
+    image: daniel_nikulin/stat_system
+    volumes:
+      - .:/app
+      - /Users/danielnikulin/DBs/sqlite/data-dev.sqlite:/app/db/data-dev.sqlite
+#      - /Users/danielnikulin/DBs/sqlite/data-dev.sqlite:/app/data.sqlite
+#      - /Users/danielnikulin/DBs/sqlite/data-dev.sqlite:/app/data-test.sqlite
+    links:
+      - redis
+      - mongodb
+    command: gunicorn -w 2 -b "0.0.0.0:8082" --log-level INFO 'manage:make_app(app_type="receiver")'
+    ports:
+      - 8082:8082
+    depends_on:
+      - mongodb
+      - redis
+      - celery_beat
+      - celery_worker_main_queue
+      - celery_worker_ssh_queue
+    env_file:
+    - ./configs/config.env
+
+  celery_beat:
+#    build: .
+    image: daniel_nikulin/stat_system
+#    volumes:
+#      - .:/app
+    env_file:
+    - ./configs/config.env
+    links:
+      - redis
+      - mongodb
+    command: celery -A celery_worker:celery beat --loglevel=INFO
+    depends_on:
+      - mongodb
+      - redis
+
+  celery_worker_main_queue:
+#    build: .
+    image: daniel_nikulin/stat_system
+    volumes:
+    - /Users/danielnikulin/DBs/sqlite/data-dev.sqlite:/app/db/data-dev.sqlite
+    env_file:
+    - ./configs/config.env
+    links:
+      - redis
+      - mongodb
+    command: celery -A celery_worker:celery worker --loglevel=INFO -n ServerMainQueue@%n
+    depends_on:
+      - mongodb
+      - redis
+
+  celery_worker_ssh_queue:
+#    build: .
+    image: daniel_nikulin/stat_system
+#    volumes:
+#      - .:/app
+    env_file:
+    - ./configs/config.env
+    links:
+      - redis
+      - mongodb
+    command: celery -A celery_worker:celery worker --loglevel=INFO -Q ssh_tasks --concurrency 4 -n ServerSSHTasksQueue@%n
+    depends_on:
+      - mongodb
+      - redis
+
+  mongodb:
+      image: mongo
+      container_name: "mongodb"
+      ports:
+      - 27017:27017
+      volumes:
+        - /Users/danielnikulin/DBs/mongodata/db:/data/db
+  redis:
+      container_name: "redis"
+      image: redis
+      ports:
+        - 6379:6379
+      volumes:
+        - /Users/danielnikulin/DBs/redis/:/var/lib/redis/
+
+
+

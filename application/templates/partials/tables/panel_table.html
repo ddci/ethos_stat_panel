@@ -1,0 +1,302 @@
+{% import 'macros/color_macros.html' as color %}
+{% macro generate_table(current_user,panel_dash) %}
+    {% if panel_dash.panel_info.rigs_info %}
+        {% for rig in panel_dash.panel_info.rigs_info %}
+
+            <tr role="row" {#class="odd"#}>
+                <td style="color: green; width: auto"></td>
+                <td class="sorting_1"><i
+                        class="fa fa-circle text-{% if panel_dash.panel_info.rigs_info[rig].is_off %}danger{% else %}success{% endif %}"><i
+                        style="visibility: hidden">{{ panel_dash.panel_info.rigs_info[rig].is_off }}</i></i>
+                </td>
+                <td>{{ panel_dash.panel_info.rigs_info[rig].status }}</td>
+                <td>{{ panel_dash.panel_info.rigs_info[rig].miner }}</td>
+                <td>{{ panel_dash.panel_info.rigs_info[rig].miner_version }}</td>
+                <td style="text-align: center"><b>{{ panel_dash.panel_info.rigs_info[rig].config_s }}</b>
+                    {% if panel_dash.panel_info.rigs_info[rig].config_s == "R" %}
+                        <div>
+                            <button data-toggle="collapse"
+                                    data-target="#toogleLocationIP{{ panel_dash.panel_info.rigs_info[rig].hostname }}"
+                                    class="btn btn-block btn-success btn-sm"
+                                    style="font-size: xx-small">IP
+                            </button>
+                            <div id="toogleLocationIP{{ panel_dash.panel_info.rigs_info[rig].hostname }}"
+                                 class="collapse">
+                                {% if panel_dash.panel_info.rigs_info[rig].send_remote %}
+                                    {{ panel_dash.panel_info.rigs_info[rig].send_remote }}{% endif %}
+                            </div>
+                        </div>{% endif %}
+                </td>
+                <td>{% if panel_dash.panel_info.rigs_info[rig].flags_status %}
+                    {% for flag in panel_dash.panel_info.rigs_info[rig].flags_status %}
+                        {% if flag == "OVERHEAT" %}
+                            <span class="label label-danger" style="font-size: xx-small">{{ flag |string| safe }}</span>
+                        {% elif flag == "RX/TX TOO HIGH" %}
+                            <span class="label label-danger" style="font-size: xx-small">{{ flag |string| safe }}</span>
+                        {% else %}
+                            <span class="label label-warning"
+                                  style="font-size: xx-small">{{ flag |string| safe }}</span>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                </td>
+                <td style="text-align: center"> {{ panel_dash.panel_info.rigs_info[rig].hostname|string }}</td>
+                <td style="text-align: center"><a style="color: black;font-weight: bold"
+                                                  href="{{ url_for("dashboard.panel_dash_rig",panel_name=request.view_args['panel_name'],rig_name = panel_dash.panel_info.rigs_info[rig].hostname) }}">{{ panel_dash.panel_info.rigs_info[rig].number|string }}</a>
+                </td>
+                <td>
+                    <div>
+                        <button data-toggle="collapse"
+                                data-target="#toogleLocation{{ panel_dash.panel_info.rigs_info[rig].hostname }}"
+                                class="btn btn-block btn-success btn-sm"
+                                style="font-size: xx-small">Change Location
+                        </button>
+                        <div id="toogleLocation{{ panel_dash.panel_info.rigs_info[rig].hostname }}" class="collapse">
+                            <form id="location_" method="post" class="location_number">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="hostname"
+                                       value="{{ panel_dash.panel_info.rigs_info[rig].hostname }}">
+                                <label>Location
+                                    <input type="text" name="location">
+                                </label>
+                                <b>! Only 10 characters</b>
+                                <input type="submit" value="Save">
+                            </form>
+                        </div>
+                    </div>
+                </td>
+                <td><b><a style="color: #00d223"
+                          href="http://{{ panel_dash.panel_info.rigs_info[rig].ip_address }}"
+                          target="_blank">{{ panel_dash.panel_info.rigs_info[rig].ip_address }}</a></b>
+                </td>
+
+                <td style="text-align: center">
+                    <b>{{ panel_dash.panel_info.rigs_info[rig].gpus_alive }}/{{ panel_dash.panel_info.rigs_info[rig].gpus }}</b>
+                </td>
+                {#<td style="text-align: center">
+                    <b class="hasTooltip">{{ panel_dash.panel_info.rigs_info[rig].gpus_alive }}/{{ panel_dash.panel_info.rigs_info[rig].gpus }}<span>{% if panel_dash.panel_info.rigs_info[rig].models %}
+                        {% for model in panel_dash.panel_info.rigs_info[rig].models %}{{ model }}<br>{% endfor %}{% endif %}</span></b>
+                </td>#}
+                <td><span class="badge bg-blue">{{ panel_dash.panel_info.rigs_info[rig].total_hashrate }}</span></td>
+                <td>
+                    {% if panel_dash.panel_info.rigs_info[rig].miner_hashes %}
+                        {% for hash in panel_dash.panel_info.rigs_info[rig].miner_hashes %}
+                            <span class="badge bg-white">{{ hash }} MH/s</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td> {{ panel_dash.panel_info.rigs_info[rig].last_request }} min</td>
+                <td> {{ panel_dash.panel_info.rigs_info[rig].uptime }}</td>
+                <td>{% if panel_dash.panel_info.rigs_info[rig].gpu_temps %}
+                    {% for temp in panel_dash.panel_info.rigs_info[rig].gpu_temps %}
+                        <span class="badge bg-{{ color.what_color(temp) }}">{{ temp }}<sup style="">°</sup></span>
+                    {% endfor %}
+                {% endif %}
+                </td>
+                <td>
+                    {% if panel_dash.panel_info.rigs_info[rig].core %}
+                        {% for core in panel_dash.panel_info.rigs_info[rig].core %}
+                            <span class="badge bg-blue">{{ core }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if panel_dash.panel_info.rigs_info[rig].mem %}
+                        {% for mem in panel_dash.panel_info.rigs_info[rig].mem %}
+                            <span class="badge bg-blue">{{ mem }}</span><br>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{% if panel_dash.panel_info.rigs_info[rig].powertune %}
+                    {% for tune in panel_dash.panel_info.rigs_info[rig].powertune %}
+                        <span class="badge bg-blue">{{ tune }}</span>
+                    {% endfor %}
+                {% endif %}
+                </td>
+
+                <td> {{ panel_dash.panel_info.rigs_info[rig].rx_kbps }}</td>
+                <td> {{ panel_dash.panel_info.rigs_info[rig].tx_kbps }}</td>
+
+
+                <td style="text-align: center">
+                    <span class="badge bg-{{ color.what_color(panel_dash.panel_info.rigs_info[rig].cpu_temp) }}">{{ panel_dash.panel_info.rigs_info[rig].cpu_temp }}<sup
+                            style="">°</sup></span>
+
+                </td>
+
+                <td>
+                    {% if panel_dash.panel_info.rigs_info[rig].zipfaninsfo %}
+                        {% for rpm,percent in panel_dash.panel_info.rigs_info[rig].zipfaninsfo %}
+                            <span class="label label-default"><span class="badge bg-blue">{{ rpm }}</span><span
+                                    class="badge bg-blue">{{ percent }}%</span></span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+
+
+            </tr>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">All rigs information</h3>
+        {#<div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>#}
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div id="example1_wrapper"
+             class="dataTables_wrapper table-striped form-inline dt-bootstrap box-body table-responsive no-padding">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="rigs" class="table table-bordered table-striped dataTable" role="grid"
+                           aria-describedby="example1_info">
+                        <thead>
+                        <tr role="row">
+                            <th tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="ОК: activate to sort column descending">
+                                Select
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="ОК: activate to sort column descending" style="width: 5px;"
+                                aria-sort="ascending">ОК
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Status: activate to sort column ascending" {#style="width: 112px;"#}>Status
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Miner: activate to sort column ascending" {#style="width: 199px;"#}>
+                                Miner
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Miner: activate to sort column ascending" {#style="width: 199px;"#}>
+                                Miner Version
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Miner: activate to sort column ascending" {#style="width: 199px;"#}>
+                                Conf
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Flags: activate to sort column ascending" {#style="width: 112px;"#}>Flags
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Ноst/Rig: activate to sort column ascending" style="width: 10px;">
+                                Ноst/Rig
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Ноst/Rig: activate to sort column ascending" style="width: 10px;">
+                                Location
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Ноst/Rig: activate to sort column ascending" style="width: 10px;">
+                                Change Location
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="IP: activate to sort column ascending" {#style="width: 112px;"#}>IP
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="GPUs: activate to sort column ascending" {#style="width: 156px;"#}>
+                                GPUs
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Hashes: activate to sort column ascending" {#style="width: 112px;"#}>
+                                Total Hash
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Hashes: activate to sort column ascending" {#style="width: 112px;"#}>
+                                Hashes
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Last seen: activate to sort column ascending" {#style="width: 40px;"#}>
+                                Last seen
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Uptime: activate to sort column ascending" {#style="width: 40px;"#}>
+                                Uptime
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="GPU Temp: activate to sort column ascending" {#style="width: 112px;"#}>GPU
+                                Temp
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Status: activate to sort column ascending" {#style="width: 112px;"#}>Core
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Status: activate to sort column ascending" {#style="width: 112px;"#}>Memory
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="GPU Temp: activate to sort column ascending" {#style="width: 112px;"#}>Power
+                                tune
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="RX: activate to sort column ascending" {#style="width: 40px;"#}>
+                                RX
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Last seen: activate to sort column ascending" {#style="width: 40px;"#}>
+                                TX
+                            </th>
+
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="GPU Temp: activate to sort column ascending" {#style="width: 112px;"#}>CPU
+                            </th>
+
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Status: activate to sort column ascending" {#style="width: 112px;"#}>Fans
+                            </th>
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{ generate_table(current_user,panel_dash) }}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th rowspan="1" colspan="1">Select</th>
+                            <th rowspan="1" colspan="1">OK</th>
+                            <th rowspan="1" colspan="1">Status</th>
+                            <th rowspan="1" colspan="1">Miner</th>
+                            <th rowspan="1" colspan="1">Miner Version</th>
+                            <th rowspan="1" colspan="1">Conf</th>
+                            <th rowspan="1" colspan="1">Flags</th>
+                            <th rowspan="1" colspan="1">Host/Rig</th>
+                            <th rowspan="1" colspan="1">Location</th>
+                            <th rowspan="1" colspan="1">Change Location</th>
+                            <th rowspan="1" colspan="1">IP</th>
+                            <th rowspan="1" colspan="1">GPUs</th>
+                            <th rowspan="1" colspan="1">Total Hash</th>
+                            <th rowspan="1" colspan="1">Hashes</th>
+                            <th rowspan="1" colspan="1">Last seen</th>
+                            <th rowspan="1" colspan="1">Uptime</th>
+                            <th rowspan="1" colspan="1">GPU Temp</th>
+                            <th rowspan="1" colspan="1">Core</th>
+                            <th rowspan="1" colspan="1">Memory</th>
+                            <th rowspan="1" colspan="1">Power Tune</th>
+                            <th rowspan="1" colspan="1">RX</th>
+                            <th rowspan="1" colspan="1">TX</th>
+
+                            <th rowspan="1" colspan="1">CPU</th>
+
+                            <th rowspan="1" colspan="1">Fans</th>
+
+
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.box-body -->
+</div>
+<!-- /.box -->

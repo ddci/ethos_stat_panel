@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block page_title %}{{ request.url_rule.endpoint }}{% endblock %} | STAT_SYSTEM </title>
+    {% include 'partials/head.html' %}
+    {# Any templates that extend this template can set custom_head_tags to add scripts to their page #}
+    {% block custom_head_tags %}{% endblock %}
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="skin-red sidebar-mini {{ request.cookies.get('body_slider_pos') }}"
+      style="height: auto; min-height: 100%;">
+<div class="wrapper">
+
+    <!-- Main Header -->
+    <header class="main-header">
+
+        <!-- Logo -->
+        <a href="{{ url_for('main.index') }}" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>U</b>ni</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b><b>U</b>ni</b>Stats</span>
+        </a>
+
+        <!-- Header Navbar -->
+        {% include "partials/nav/header_navbar.html" %}
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    {% include "partials/nav/main_sidebar.html" with context %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+
+        <section class="content-header">
+            {% block content_header %}
+            {% endblock %}
+        </section>
+
+        <!-- Main content -->
+        <section class="content container-fluid">
+            {% include 'partials/_flashes.html' %}
+            {# When extended, the content block contains all the html of the webpage #}
+            {% block content %}
+
+            {% endblock %}
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2018 <a href="#">Daniel Nikulin</a>.</strong> This
+        Software is provided "AS IS"
+    </footer>
+
+    <!-- Control Sidebar -->
+    {% include "partials/nav/control_sidebar.html" %}
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+{% include 'partials/required_js.html' %}
+{#<script src="{{ url_for('static',filename= 'dist/js/adminlte.min.js')}}"></script>#}
+{# Any templates that extend this template can set custom_head_tags to add scripts to their page #}
+{% block custom_js_libs %}{% endblock %}
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+{# Implement CSRF protection for site #}
+{% if csrf_token()|safe %}
+    <div style="visibility: hidden; display: none">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token()|safe }}">
+    </div>
+{% endif %}
+</body>
+</html>

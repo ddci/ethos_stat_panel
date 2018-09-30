@@ -1,0 +1,285 @@
+{% extends 'layouts/base.html' %}
+{% import 'macros/color_macros.html' as color %}
+{% import 'macros/percentage_macros.html' as percentage %}
+
+{% block page_title %}Main Dashboard{% endblock page_title %}
+{% block content_header %}
+    <h1>
+        Your main Dashboard
+        <small>Main Information about all your panel</small>
+        <small style="color: green">DB requests and calculations execution time {{ main_dash.execution_time }} seconds
+        </small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        {#        <li class="active">Here</li>#}
+    </ol>
+{% endblock content_header %}
+
+{% block content %}
+    {% if main_dash.num_of_rigs_under_attack %}
+        <div class="row">
+            <div class="alert alert-danger alert-dismissible col-lg-6 col-sm-6 col-xs-12 col-md-offset-3 ">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Alert Attack Detected!</h4>
+                Attack detected (RX/TX are too high)
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 col-md-offset-4">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>{{  main_dash.num_of_rigs_under_attack}}</h3>
+
+                        <p>Rigs Under Attack</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>{% endif %}
+        <!--row-->
+        <div class="row">
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>{{ main_dash.total_hashrate }} MH/s</h3>
+
+                        <p>Total Hash</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-stats-bars"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>{{ main_dash.num_of_alive_gpus }}/{{ main_dash.num_of_gpus }}</h3>
+
+                        <p>GPUs Alive</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+                <!-- small box -->
+                <div class="small-box bg-teal-active">
+                    <div class="inner">
+                        <h3>{{ main_dash.num_of_alive_panels }}/{{ main_dash.num_of_panels }}</h3>
+                        <p>Panels alive</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion ion-android-desktop"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!--./row -->
+        <div class="row">
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+                <!-- small box -->
+                <div class="small-box bg-teal-active">
+                    <div class="inner">
+                        <h3>{{ main_dash.num_of_alive_rigs }}/{{ main_dash.num_of_rigs }}</h3>
+
+                        <p>Rigs Alive</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion ion-android-desktop"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!--./col-->
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+                <!-- small box -->
+                <div class="small-box bg-{{ color.what_color(main_dash.average_gpu_temperature) }}">
+                    <div class="inner">
+                        <h3>{{ main_dash.average_gpu_temperature }}<sup style="font-size: 30px">°</sup></h3>
+
+                        <p>Average GPUs Temp</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-thermometer"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!--./col-->
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">All your panels</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    {% if main_dash.list_of_panels %}
+                        {% for panel in main_dash.list_of_panels %}
+                            <div class="box-body">
+                                <a href="{{ url_for('dashboard.panel_dash',panel_name=panel) }}">
+                                    <button type="button" class="btn btn-block btn-info"><b>Panel name: {{ panel }}</b>
+                                    </button>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!--./col-->
+        </div>
+        <!--./row -->
+    {% if main_dash.list_of_alive_panels %}
+        {% for panel_name in main_dash.list_of_alive_panels %}
+                {% if main_dash.panels_info[panel_name] %}
+                    <div class="row">
+                    <div class="col-md-12">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">{{ panel_name }} Report</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                            class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-lg-5 col-sm-6 col-xs-12">
+
+                                                <!-- small box -->
+                                                <div class="small-box bg-green">
+                                                    <div class="inner">
+                                                        <h3>{{ main_dash.panels_info[panel_name].total_hashrate }}MH/s</h3>
+
+                                                        <p>Total Hash</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion-stats-bars"></i>
+                                                    </div>
+                                                    <a href="{{ url_for("dashboard.panel_dash",panel_name=panel_name) }}"
+                   class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                                <!-- small box -->
+                                                <div class="small-box bg-{{ color.what_color(main_dash.panels_info[panel_name].average_gpu_temperature|float) }}">
+                                                    <div class="inner">
+                                                        <h3>{{ main_dash.panels_info[panel_name].average_gpu_temperature }}<sup
+                                                                style="font-size: 30px">°</sup></h3>
+
+                                                        <p>Average GPUs Temp</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-thermometer"></i>
+                                                    </div>
+                                                     <a href="{{ url_for("dashboard.panel_dash",panel_name=panel_name) }}"
+                   class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3 col-xs-12">
+                                                <!-- small box -->
+                                                <div class="small-box bg-red">
+                                                    <div class="inner">
+                                                        <h3>{{ main_dash.panels_info[panel_name].num_of_crashed_gpus }}</h3>
+
+                                                        <p>Crashed GPUs</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-ios-close"></i>
+                                                    </div>
+                                                    <a href="{{ url_for("dashboard.panel_dash_crashed_gpus",panel_name=panel_name) }}"
+                   class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- /.col -->
+
+                                    <div class="col-md-4">
+                                        <p class="text-center">
+                                            {#                                            <strong>Panel specific inforamtion {{ panel_name }}</strong>#}
+                                        </p>
+
+                                        <div class="progress-group">
+                                            <span class="progress-text">Rigs</span>
+                                            <span class="progress-number"><b>{{ main_dash.panels_info[panel_name].num_of_alive_rigs }}</b>/{{ main_dash.panels_info[panel_name].num_of_rigs }}</span>
+
+                                            <div class="progress sm">
+                                                <div class="progress-bar progress-bar-green"
+                                                     style="width: {{ percentage.get_percent(main_dash.panels_info[panel_name].num_of_alive_rigs|int,main_dash.panels_info[panel_name].num_of_rigs|int) }}%"></div>
+                                            </div>
+                                        </div>
+                                        <!-- /.progress-group -->
+                                        <div class="progress-group">
+                                            <span class="progress-text">GPUs</span>
+                                            <span class="progress-number"><b>{{ main_dash.panels_info[panel_name].num_of_alive_gpus }}</b>/{{ main_dash.panels_info[panel_name].num_of_gpus }}</span>
+
+                                            <div class="progress sm">
+                                                <div class="progress-bar progress-bar-red"
+                                                     style="width: {{ percentage.get_percent(main_dash.panels_info[panel_name].num_of_alive_gpus|int,main_dash.panels_info[panel_name].num_of_gpus|int) }}%"></div>
+                                            </div>
+                                        </div>
+                                        {#<!-- /.progress-group -->
+                                        <div class="progress-group">
+                                            <span class="progress-text">Visit Premium Page</span>
+                                            <span class="progress-number"><b>480</b>/800</span>
+
+                                            <div class="progress sm">
+                                                <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+                                        <!-- /.progress-group -->#}
+
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+
+                            </div>
+                            <!-- ./box-body -->
+
+
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+
+{% block custom_js_libs %}
+    {#    <script src="{{ url_for('static',filename= 'bower_components/jquery-knob/js/jquery.knob.js') }}"></script>#}
+{% endblock %}
