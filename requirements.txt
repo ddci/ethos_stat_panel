@@ -37,7 +37,7 @@ MarkupSafe==1.0
 numpy==1.14.0
 onetimepass==1.0.1
 pandas==0.22.0
-paramiko==2.4.0
+paramiko==2.4.2
 pyasn1==0.4.2
 pycparser==2.18
 PyJWT==1.5.3
