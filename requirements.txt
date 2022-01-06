@@ -5,7 +5,7 @@ BareNecessities==0.2.8
 bcrypt==3.1.4
 billiard==3.5.0.3
 blinker==1.4
-celery==4.1.0
+celery==5.2.2
 celery-once==1.2.0
 certifi==2017.11.5
 cffi==1.11.4
