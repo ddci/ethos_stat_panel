@@ -32,7 +32,7 @@ itsdangerous==0.24
 Jinja2==2.10
 kombu==4.1.0
 Mail==2.1.0
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.0
 numpy==1.14.0
 onetimepass==1.0.1
